@@ -2,14 +2,13 @@ import Link from 'next/link'
 import { getLocale, getLocalesNearby } from '../utils/locales'
 import StaticMap from '../components/map/static-map';
 import Map from '../components/map';
-import Page from '../components/page.js';
 import PageList from '../components/page-list.js';
 
 const Locale = ({currentLocale = {}}) => {
     const localesNearby = getLocalesNearby(currentLocale.id, currentLocale.position, 9);
 
     return (
-        <Page>
+        <>
             <h1>{currentLocale.name}</h1>
             <noscript>
                 <StaticMap currentLocale={currentLocale} localesNearby={localesNearby}/>
@@ -47,7 +46,7 @@ const Locale = ({currentLocale = {}}) => {
             <Link href="/">
                 <a>Tillbaka</a>
             </Link>
-        </Page>
+        </>
     )
 };
 

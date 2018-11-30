@@ -3,7 +3,6 @@ import Map from '../components/map';
 import LocalesList from '../components/locales-list';
 import { getLocales } from '../utils/locales'
 import Link from 'next/link';
-import Page from '../components/page.js';
 import store from '../utils/store'
 import style from './index.scss';
 
@@ -23,7 +22,7 @@ class App extends React.PureComponent {
         const position = store.get('position');
 
         return (
-            <Page>
+            <>
                 <Link href="/about" as="/om">
                     <a className={style.link}>Om</a>
                 </Link>
@@ -40,7 +39,7 @@ class App extends React.PureComponent {
                     onDragEnd={this.onDragEnd}
                     onZoomChanged={this.onZoomChanged}
                 />
-            </Page>
+            </>
         )
     }
 }
