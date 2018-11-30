@@ -18,12 +18,10 @@ const LocalesList = ({locales = []}) => {
                     const heading = firstOnLetterLocale.id === id ? <h2 id={firstLetter}>{firstLetter}</h2> : null;
 
                     return (
-                        <>
+                        <div key={i}>
                             {heading}
-                            <div key={i}>
                                 <Link prefetch href={`/?locale=${id}`} as={`/locale/${id}`} ><a>{name} [{pages.length}]</a></Link>
-                            </div>
-                        </>
+                        </div>
                     )
                 }
 
