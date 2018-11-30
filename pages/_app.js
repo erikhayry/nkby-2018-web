@@ -10,7 +10,7 @@ class MyApp extends App {
             pageProps = await Component.getInitialProps(ctx);
         }
 
-        return { pageProps: { ...pageProps, user: ctx.user, token: ctx.token } };
+        return { pageProps };
     }
 
     render() {
