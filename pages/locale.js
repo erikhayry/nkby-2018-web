@@ -8,7 +8,7 @@ const Locale = ({currentLocale = {}}) => {
     const localesNearby = getLocalesNearby(currentLocale.id, currentLocale.position, 9);
 
     return (
-        <>
+        <div>
             <h1>{currentLocale.name}</h1>
             <noscript>
                 <StaticMap currentLocale={currentLocale} localesNearby={localesNearby}/>
@@ -46,7 +46,7 @@ const Locale = ({currentLocale = {}}) => {
             <Link href="/">
                 <a>Tillbaka</a>
             </Link>
-        </>
+        </div>
     )
 };
 

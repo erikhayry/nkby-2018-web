@@ -4,7 +4,6 @@ import LocalesList from '../components/locales-list';
 import { getLocales } from '../utils/locales'
 import Link from 'next/link';
 import store from '../utils/store'
-import style from './index.scss';
 
 class App extends React.PureComponent {
     onZoomChanged(zoom){
@@ -22,9 +21,9 @@ class App extends React.PureComponent {
         const position = store.get('position');
 
         return (
-            <>
+            <div>
                 <Link href="/about" as="/om">
-                    <a className={style.link}>Om</a>
+                    <a >Om</a>
                 </Link>
 
                 <noscript>
@@ -39,7 +38,7 @@ class App extends React.PureComponent {
                     onDragEnd={this.onDragEnd}
                     onZoomChanged={this.onZoomChanged}
                 />
-            </>
+            </div>
         )
     }
 }
