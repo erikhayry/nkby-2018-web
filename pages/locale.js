@@ -4,9 +4,7 @@ import StaticMap from '../components/map/static-map';
 import Map from '../components/map';
 import PageList from '../components/page-list.js';
 
-const Locale = ({currentLocale = {}}) => {
-    const localesNearby = getLocalesNearby(currentLocale.id, currentLocale.position, 9);
-
+const Locale = ({currentLocale = {}, localesNearby = []}) => {
     return (
         <div>
             <h1>{currentLocale.name}</h1>
@@ -33,10 +31,10 @@ const Locale = ({currentLocale = {}}) => {
             <noscript>
                 <h2 id="nearby-locales">Närliggande adress</h2>
                 <ol>
-                    {localesNearby.map(({id, name, pages}, i) => {
+                    {localesNearby.map(({id, name, numberOfPages}, i) => {
                         return (
                             <li key={i}>
-                                <Link prefetch href={`/?locale=${id}`} as={`/locale/${id}`} ><a>{name} [{pages.length}]</a></Link>
+                                <Link prefetch href={`/?locale=${id}`} as={`/locale/${id}`} ><a>{name} [{numberOfPages}]</a></Link>
                             </li>
                         )
                     })}
@@ -52,10 +50,11 @@ const Locale = ({currentLocale = {}}) => {
 
 Locale.getInitialProps = async function (context) {
     const { id } = context.query;
-    const locale = getLocale(id);
+    const locale = await getLocale(id);
 
     if(id){
-        return { currentLocale: locale }
+        const localesNearby = await getLocalesNearby(id, locale.position, 9);
+        return { currentLocale: locale, localesNearby }
     }
 
     return {currentLocale: undefined }

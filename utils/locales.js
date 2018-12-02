@@ -1,4 +1,5 @@
 import locales from '../data/locales.json';
+import fetch from 'isomorphic-unfetch';
 
 function sortByName(a, b){
     if(a < b){
@@ -29,8 +30,9 @@ function PythagorasEquirectangular(lat1, lon1, lat2, lon2) {
     return Math.sqrt(x * x + y * y) * R;
 }
 
-export function getLocalesNearby(currentLocaleId, {lng: currentLocaleLng, lat: currentLocaleLat}, numbersOfResults = 10){
-    return getLocales()
+export async function getLocalesNearby(currentLocaleId, {lng: currentLocaleLng, lat: currentLocaleLat}, numbersOfResults = 10){
+    const locales = await getLocales();
+    return locales
         .filter(locale => locale.position && locale.id !== currentLocaleId)
         .map(locale => {
             const {lng, lat} = locale.position;
@@ -47,13 +49,18 @@ export function getLocalesNearby(currentLocaleId, {lng: currentLocaleLng, lat: c
         .splice(0, numbersOfResults)
 }
 
-export function getLocales(){
-    return Object.keys(locales)
-        .map(key => ({id: key, ...locales[key]}))
+export async function getLocales() {
+    const localesJson = await fetch('http://localhost:3000/api/locales')
+    const locales = await localesJson.json()
+
+    return locales;
 }
 
-export function getLocale(id){
-    return {id, ...locales[id]}
+export async function getLocale(id){
+    const localeJson = await fetch(`http://localhost:3000/api/locale/${id}`)
+    const locale = await localeJson.json()
+
+    return locale;
 }
 
 export function sortLocalesByName(locales){

@@ -11,7 +11,7 @@ const LocalesList = ({locales = []}) => {
                 {letterList.map((letter, i) => <li key={i}><a href={`#${letter}`}>{letter}</a></li>)}
             </ul>
 
-            {sortedLocales.map(({id, name, pages, position}, i) => {
+            {sortedLocales.map(({id, name, numberOfPages, position}, i) => {
                 if(position){
                     const firstLetter = name[0];
                     const firstOnLetterLocale = sortedLocales.find(({name}) => firstLetter === name[0]);
@@ -20,7 +20,7 @@ const LocalesList = ({locales = []}) => {
                     return (
                         <div key={i}>
                             {heading}
-                                <Link prefetch href={`/?locale=${id}`} as={`/locale/${id}`} ><a>{name} [{pages.length}]</a></Link>
+                                <Link prefetch href={`/?locale=${id}`} as={`/locale/${id}`} ><a>{name} [{numberOfPages}]</a></Link>
                         </div>
                     )
                 }
