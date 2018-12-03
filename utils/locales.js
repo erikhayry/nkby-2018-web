@@ -1,5 +1,13 @@
 import fetch from 'isomorphic-unfetch';
 
+function getOrigin() {
+    if(typeof document !== 'undefined'){
+        return document.location.origin
+    } else {
+        return `http://localhost:3000`
+    }
+}
+
 function sortByName(a, b){
     if(a < b){
         return -1
@@ -12,25 +20,25 @@ function sortByName(a, b){
     return 0;
 }
 
-export async function getLocalesNearby(currentLocaleId, numbersOfResults = 10){
-    const localesJson = await fetch(`http://localhost:3000/api/locales-nearby/${currentLocaleId}?numbersOfResults=${numbersOfResults}`);
-    const locales = await localesJson.json()
+async function get(url) {
+    const origin = getOrigin();
+    const localesJson = await fetch(`${origin}/api/${url}`);
 
-    return locales;
+    return await localesJson.json();
+}
+
+export async function getLocalesNearby(currentLocaleId, numbersOfResults = 10){
+    return get(`locales-nearby/${currentLocaleId}?numbersOfResults=${numbersOfResults}`);
 }
 
 export async function getLocales() {
-    const localesJson = await fetch('http://localhost:3000/api/locales')
-    const locales = await localesJson.json()
-
-    return locales;
+    return get(`locales`);
 }
 
 export async function getLocale(id){
-    const localeJson = await fetch(`http://localhost:3000/api/locale/${id}`)
-    const locale = await localeJson.json()
+    const locale = await get(`locale/${id}`)
 
-    return locale;
+    return {id, ...locale};
 }
 
 export function sortLocalesByName(locales){
