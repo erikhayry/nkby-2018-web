@@ -1,4 +1,3 @@
-import locales from '../data/locales.json';
 import fetch from 'isomorphic-unfetch';
 
 function sortByName(a, b){
@@ -13,40 +12,11 @@ function sortByName(a, b){
     return 0;
 }
 
-// Convert Degress to Radians
-function Deg2Rad(deg) {
-    return deg * Math.PI / 180;
-}
+export async function getLocalesNearby(currentLocaleId, numbersOfResults = 10){
+    const localesJson = await fetch(`http://localhost:3000/api/locales-nearby/${currentLocaleId}?numbersOfResults=${numbersOfResults}`);
+    const locales = await localesJson.json()
 
-function PythagorasEquirectangular(lat1, lon1, lat2, lon2) {
-    lat1 = Deg2Rad(lat1);
-    lat2 = Deg2Rad(lat2);
-    lon1 = Deg2Rad(lon1);
-    lon2 = Deg2Rad(lon2);
-    let R = 6371; // km
-    let x = (lon2 - lon1) * Math.cos((lat1 + lat2) / 2);
-    let y = (lat2 - lat1);
-
-    return Math.sqrt(x * x + y * y) * R;
-}
-
-export async function getLocalesNearby(currentLocaleId, {lng: currentLocaleLng, lat: currentLocaleLat}, numbersOfResults = 10){
-    const locales = await getLocales();
-    return locales
-        .filter(locale => locale.position && locale.id !== currentLocaleId)
-        .map(locale => {
-            const {lng, lat} = locale.position;
-            const dif = PythagorasEquirectangular(currentLocaleLng, currentLocaleLat, lng, lat);
-
-            return {
-                ...locale,
-                dif
-            }
-        })
-        .sort((localeA, localeB) => {
-            return localeA.dif - localeB.dif
-        })
-        .splice(0, numbersOfResults)
+    return locales;
 }
 
 export async function getLocales() {

@@ -23,7 +23,6 @@ function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMark
 
     return locales.map(({id, ...locale}) => {
         const { name, position } = locale;
-        console.log(name, position)
         return position ? <MarkerWithLabel
             key={id}
             position={position}

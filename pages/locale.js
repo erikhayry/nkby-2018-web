@@ -51,13 +51,9 @@ const Locale = ({currentLocale = {}, localesNearby = []}) => {
 Locale.getInitialProps = async function (context) {
     const { id } = context.query;
     const locale = await getLocale(id);
+    const localesNearby = await getLocalesNearby(id, 9);
 
-    if(id){
-        const localesNearby = await getLocalesNearby(id, locale.position, 9);
-        return { currentLocale: locale, localesNearby }
-    }
-
-    return {currentLocale: undefined }
+    return { currentLocale: locale, localesNearby }
 };
 
 export default Locale;
