@@ -6,11 +6,11 @@ import PageList from '../components/page-list.js';
 
 const Locale = ({currentLocale = {}, localesNearby = []}) => {
     return (
-        <div>
+        <>
             <h1>{currentLocale.name}</h1>
             <noscript>
                 <StaticMap currentLocale={currentLocale} localesNearby={localesNearby}/>
-                <a href="#nearby-locales">Närliggande adresser</a>
+                <a href="#nearby-locales" aria-label="Gå till lista med närliggande adresser">Närliggande adresser</a>
             </noscript>
             <Map
                 position={currentLocale.position}
@@ -29,12 +29,14 @@ const Locale = ({currentLocale = {}, localesNearby = []}) => {
             <PageList pages={currentLocale.pages} />
 
             <noscript>
-                <h2 id="nearby-locales">Närliggande adress</h2>
+                <h2 id="nearby-locales">Närliggande adresser</h2>
                 <ol>
                     {localesNearby.map(({id, name, numberOfPages}, i) => {
                         return (
                             <li key={i}>
-                                <Link prefetch href={`/?locale=${id}`} as={`/locale/${id}`} ><a>{name} [{numberOfPages}]</a></Link>
+                                <Link prefetch href={`/?locale=${id}`} as={`/locale/${id}`} >
+                                    <a>{name} [{numberOfPages}]</a>
+                                </Link>
                             </li>
                         )
                     })}
@@ -42,9 +44,9 @@ const Locale = ({currentLocale = {}, localesNearby = []}) => {
             </noscript>
 
             <Link href="/">
-                <a>Tillbaka</a>
+                <a aria-label="tillbaka till kartan">Tillbaka</a>
             </Link>
-        </div>
+        </>
     )
 };
 

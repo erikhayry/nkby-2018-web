@@ -8,7 +8,7 @@ const PageList = ({pages = []}) =>
         {sortPagesByTitle(pages).map((page, i) => {
             return (
                 <li key={i}>
-                    <LazyLoad>
+                    <LazyLoad height={100}>
                         <img src={parseImageSrc(page.image)} />
                     </LazyLoad>
                     <noscript>

@@ -70,7 +70,7 @@ const MapRenderer = (props) => {
 
     return (
         <>
-            {showFindMeButton && <button onClick={props.setLocation}>Hitta mig</button>}
+            {showFindMeButton && <button onClick={props.setLocation} aria-label="Hitta min position på kartan">Hitta mig</button>}
             <GoogleMap
                 defaultZoom={zoom || 12}
                 defaultCenter={position || { lat: 63.5217687, lng: 22.5216011 }}

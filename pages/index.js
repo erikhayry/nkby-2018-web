@@ -2,7 +2,6 @@ import React from "react"
 import Map from '../components/map';
 import LocalesList from '../components/locales-list';
 import { getLocales } from '../utils/locales'
-import Link from 'next/link';
 import store from '../utils/store'
 
 class App extends React.PureComponent {
@@ -21,11 +20,7 @@ class App extends React.PureComponent {
         const position = store.get('position');
 
         return (
-            <div>
-                <Link href="/about" as="/om">
-                    <a >Om</a>
-                </Link>
-
+            <>
                 <noscript>
                     <LocalesList locales={locales}  />
                 </noscript>
@@ -38,7 +33,7 @@ class App extends React.PureComponent {
                     onDragEnd={this.onDragEnd}
                     onZoomChanged={this.onZoomChanged}
                 />
-            </div>
+            </>
         )
     }
 }

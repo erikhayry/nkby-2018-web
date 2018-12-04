@@ -13,14 +13,14 @@ export default (props) => {
     let markers = position ? `&markers=${position.lat},${position.lng}` : '';
     markers = localesNearby.map(getLaballedMarker).join('') + markers;
 
-    let visible = localesNearby.map(getVisible).join('|');
-
+    const visible = localesNearby.map(getVisible).join('|');
     const center = position ? `${position.lat},${position.lng}` : `63.5217687,22.5216011`;
-    const zoom = position ? 16 : 12;
+
     return (
         <img
-            src={`https://maps.googleapis.com/maps/api/staticmap?center=${center}&size=400x400${markers}&visible=${visible}&key=${process.env.GOOGLE_STATIC_MAPS_API}`
-            }
+            src={`https://maps.googleapis.com/maps/api/staticmap?center=${center}&size=400x400${markers}&visible=${visible}&key=${process.env.GOOGLE_STATIC_MAPS_API}`}
+            alt={`Karta med ${currentLocale.name} markerad och de närliggande adressserna ${localesNearby.map(({name}) => name).join(',')}`}
+            description=""
         />
     )
 }
