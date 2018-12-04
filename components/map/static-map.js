@@ -20,7 +20,6 @@ export default (props) => {
         <img
             src={`https://maps.googleapis.com/maps/api/staticmap?center=${center}&size=400x400${markers}&visible=${visible}&key=${process.env.GOOGLE_STATIC_MAPS_API}`}
             alt={`Karta med ${currentLocale.name} markerad och de närliggande adressserna ${localesNearby.map(({name}) => name).join(',')}`}
-            description=""
         />
     )
 }
