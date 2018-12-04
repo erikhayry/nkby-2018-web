@@ -2,6 +2,7 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import * as Sentry from '@sentry/browser';
 import Link from 'next/link';
+import '../styles/global.scss'
 
 export const appWithInitialization = App => {
   return class AppWithUser extends React.Component {
@@ -31,10 +32,10 @@ export const appWithInitialization = App => {
     }
 
     render() {
-      const {router: {pathname}} = this.props;
+      const {router: {pathname}, pageProps: {skipToContentCopy}} = this.props;
 
       return <>
-        <a href="#main">Gå direkt till innehåll</a>
+        <a href="#main" className="visible-hidden">{skipToContentCopy || 'Gå direkt till innehåll'}</a>
         <nav>
             {pathname !== '/about' && <Link href="/about" as="/om">
                 <a aria-label="information om sidan">Om</a>

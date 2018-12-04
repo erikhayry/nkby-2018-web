@@ -39,7 +39,7 @@ class App extends React.PureComponent {
 App.getInitialProps = async function () {
     const locales = await getLocales();
 
-    return { locales }
+    return { locales, skipToContentCopy: 'Gå till lista med gatunamn' }
 };
 
 export default App

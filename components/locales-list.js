@@ -20,7 +20,7 @@ const LocalesList = ({locales = []}) => {
                     return (
                         <div key={id}>
                             {heading}
-                            <Link prefetch href={`?locale=${id}`} as={`/locale/${id}`} >
+                            <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
                                 <a>{name} [{numberOfPages}]</a>
                             </Link>
                         </div>

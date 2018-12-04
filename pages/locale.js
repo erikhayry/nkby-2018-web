@@ -12,6 +12,7 @@ const Locale = ({error, locale = {}, localesNearby = []}) => {
         <>
             <h1>{locale.name}</h1>
             <StaticMap currentLocale={locale} localesNearby={localesNearby}/>
+            <br/>
             <a href="#nearby-locales" aria-label="Gå till lista med närliggande adresser">Närliggande adresser</a>
 
             <PageList pages={locale.pages} />
@@ -21,7 +22,7 @@ const Locale = ({error, locale = {}, localesNearby = []}) => {
                 {localesNearby.map(({id, name, numberOfPages}, i) => {
                     return (
                         <li key={i}>
-                            <Link prefetch href={`?locale=${id}`} as={`/locale/${id}`} >
+                            <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
                                 <a>{name} [{numberOfPages}]</a>
                             </Link>
                         </li>
