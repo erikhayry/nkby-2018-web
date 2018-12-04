@@ -3,18 +3,22 @@ import { getLocale, getLocalesNearby } from '../utils/locales'
 import StaticMap from '../components/map/static-map';
 import Map from '../components/map';
 import PageList from '../components/page-list.js';
+import ErrorPage from 'next/error'
 
-const Locale = ({currentLocale = {}, localesNearby = []}) => {
+const Locale = ({error, locale = {}, localesNearby = []}) => {
+    if (error) {
+        return <ErrorPage statusCode={error} />
+    }
     return (
         <>
-            <h1>{currentLocale.name}</h1>
+            <h1>{locale.name}</h1>
             <noscript>
-                <StaticMap currentLocale={currentLocale} localesNearby={localesNearby}/>
+                <StaticMap currentLocale={locale} localesNearby={localesNearby}/>
                 <a href="#nearby-locales" aria-label="Gå till lista med närliggande adresser">Närliggande adresser</a>
             </noscript>
             <Map
-                position={currentLocale.position}
-                locales={[currentLocale]}
+                position={locale.position}
+                locales={[locale]}
                 style={{height: '200px', width: '200px'}}
                 options={{
                     fullscreenControl: false,
@@ -26,7 +30,7 @@ const Locale = ({currentLocale = {}, localesNearby = []}) => {
                 enableUserInteractions={false}
             />
 
-            <PageList pages={currentLocale.pages} />
+            <PageList pages={locale.pages} />
 
             <noscript>
                 <h2 id="nearby-locales">Närliggande adresser</h2>
@@ -53,9 +57,14 @@ const Locale = ({currentLocale = {}, localesNearby = []}) => {
 Locale.getInitialProps = async function (context) {
     const { id } = context.query;
     const locale = await getLocale(id);
-    const localesNearby = await getLocalesNearby(id, 9);
 
-    return { currentLocale: locale, localesNearby }
+    if(locale){
+        const localesNearby = await getLocalesNearby(id, 9);
+
+        return { locale, localesNearby }
+    }
+
+    return { error: 404}
 };
 
 export default Locale;

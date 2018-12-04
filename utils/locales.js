@@ -21,10 +21,18 @@ function sortByName(a, b){
 }
 
 async function get(url) {
-    const origin = getOrigin();
-    const localesJson = await fetch(`${origin}/api/${url}`);
+    try {
+        const origin = getOrigin();
+        const localesJson = await fetch(`${origin}/api/${url}`);
 
-    return await localesJson.json();
+        if(localesJson.status === 200){
+            return await localesJson.json();
+        }
+
+        return undefined;
+    } catch(error) {
+        console.error(error);
+    }
 }
 
 export async function getLocalesNearby(currentLocaleId, numbersOfResults = 10){
@@ -38,7 +46,11 @@ export async function getLocales() {
 export async function getLocale(id){
     const locale = await get(`locale/${id}`)
 
-    return {id, ...locale};
+    if(locale){
+        return {id, ...locale};
+    }
+
+    return undefined;
 }
 
 export function sortLocalesByName(locales){

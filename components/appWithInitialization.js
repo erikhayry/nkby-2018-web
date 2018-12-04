@@ -31,12 +31,17 @@ export const appWithInitialization = App => {
     }
 
     render() {
+      const {router: {pathname}} = this.props;
+
       return <>
         <a href="#main">Gå direkt till innehåll</a>
         <nav>
-            <Link href="/about" as="/om">
-                <a aria-label="om sidan">Om</a>
-            </Link>
+            {pathname !== '/about' && <Link href="/about" as="/om">
+                <a aria-label="information om sidan">Om</a>
+            </Link>}
+            {pathname !== '/' && <Link href="/">
+                <a aria-label="startsida med karta">Startsidan</a>
+            </Link>}
         </nav>
         <App {...this.props} role="main"/>
       </>
