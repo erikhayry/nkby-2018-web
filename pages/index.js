@@ -21,9 +21,6 @@ class App extends React.PureComponent {
 
         return (
             <>
-                <noscript>
-                    <LocalesList locales={locales}  />
-                </noscript>
                 <Map
                     locales={locales}
                     visitedLocales={visitedLocales}
@@ -33,6 +30,7 @@ class App extends React.PureComponent {
                     onDragEnd={this.onDragEnd}
                     onZoomChanged={this.onZoomChanged}
                 />
+                <LocalesList locales={locales}  />
             </>
         )
     }

@@ -39,6 +39,7 @@ export const appWithInitialization = App => {
             {pathname !== '/about' && <Link href="/about" as="/om">
                 <a aria-label="information om sidan">Om</a>
             </Link>}
+            <br/>
             {pathname !== '/' && <Link href="/">
                 <a aria-label="startsida med karta">Startsidan</a>
             </Link>}

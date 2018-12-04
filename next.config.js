@@ -16,7 +16,8 @@ module.exports = withSass({
     webpack: config => {
         config.plugins.push(
             new webpack.EnvironmentPlugin({
-                GOOGLE_MAPS_API: ''
+                GOOGLE_MAPS_API: '',
+                GOOGLE_STATIC_MAPS_API: '',
             })
         );
 
