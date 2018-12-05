@@ -1,19 +1,13 @@
 import ReactGA from 'react-ga';
-import { parseImageSrc } from '../utils'
 import { sortPagesByTitle } from '../utils/locales';
-import LazyLoad from 'react-lazyload';
+import Image from './image';
 
 const PageList = ({pages = []}) =>
     <ul>
         {sortPagesByTitle(pages).map((page, i) => {
             return (
                 <li key={i}>
-                    <LazyLoad height={100}>
-                        <img src={parseImageSrc(page.image)} />
-                    </LazyLoad>
-                    <noscript>
-                        <img src={parseImageSrc(page.image)} />
-                    </noscript>
+                    <Image src={page.image}/>
                     <br/>
                     <ReactGA.OutboundLink
                         eventLabel="to-nykarlebyvyer"

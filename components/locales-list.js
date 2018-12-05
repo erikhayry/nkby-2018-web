@@ -7,7 +7,7 @@ const LocalesList = ({locales = []}) => {
 
     return (
         <>
-            <ul>
+            <ul role="nav">
                 {letterList.map((letter, i) => <li key={i}><a href={`#${letter}`}>{letter}</a></li>)}
             </ul>
 
