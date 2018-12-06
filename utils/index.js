@@ -20,7 +20,7 @@ export function capitalize(string) {
 
 export function parseImageSrc(src){
     if(src){
-        return `http://www.nykarlebyvyer.nu/${src.replace('../../../', '')}`;
+        return `https://www.nykarlebyvyer.nu/${src.replace('../../../', '')}`;
     }
 
     return undefined;
