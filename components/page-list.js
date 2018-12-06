@@ -5,9 +5,11 @@ import Image from './image';
 const PageList = ({pages = []}) =>
     <ul>
         {sortPagesByTitle(pages).map((page, i) => {
+            const {src, description} = page.image;
+
             return (
                 <li key={i}>
-                    <Image src={page.image}/>
+                    <Image src={src} alt={description} />
                     <br/>
                     <ReactGA.OutboundLink
                         eventLabel="to-nykarlebyvyer"

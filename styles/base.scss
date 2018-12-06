@@ -25,3 +25,11 @@ button {
   position: absolute;
   width: auto;
 }
+
+.lazyload-placeholder{
+  display: none;
+}
+
+.js .lazyload-placeholder{
+  display: block;
+}

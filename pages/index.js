@@ -3,6 +3,7 @@ import Map from '../components/map';
 import LocalesList from '../components/locales-list';
 import { getLocales } from '../utils/locales'
 import store from '../utils/store'
+import Head from 'next/head'
 
 class App extends React.PureComponent {
     onZoomChanged(zoom){
@@ -21,6 +22,9 @@ class App extends React.PureComponent {
 
         return (
             <>
+                <Head>
+                    <title>NKBY - Start</title>
+                </Head>
                 <Map
                     locales={locales}
                     visitedLocales={visitedLocales}
