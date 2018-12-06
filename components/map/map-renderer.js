@@ -20,7 +20,6 @@ function getIcon(id, visitedLocales = []){
 }
 
 function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMarker, handleMarkerEvent, enableUserInteractions = true){
-
     return locales.map(({id, ...locale}) => {
         const { name, position } = locale;
 
@@ -37,7 +36,7 @@ function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMark
             zIndex={id === activeMarker ? 1 : 0}
             onClick={() => {
                 if(enableUserInteractions) {
-                    handleMarkerEvent(id, visitedLocales);
+                    handleMarkerEvent(id);
                 }
             }}
             onMouseOver={() => {

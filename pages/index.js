@@ -23,7 +23,7 @@ class App extends React.PureComponent {
         return (
             <>
                 <Head>
-                    <title>NKBY - Start</title>
+                    <title>Start | NKBY</title>
                 </Head>
                 <Map
                     locales={locales}

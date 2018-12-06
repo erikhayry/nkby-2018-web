@@ -41,11 +41,7 @@ class Map extends React.Component {
         }
     }
 
-    handleMarkerEvent(id, visitedLocales = []){
-        if(!visitedLocales.includes(id)){
-            store.set('visited-locales', [...visitedLocales, id]);
-        }
-
+    handleMarkerEvent(id){
         ReactGA.event({
             category: 'user',
             action: `marker:${id}`

@@ -13,7 +13,7 @@ const PageList = ({pages = []}) =>
                     <br/>
                     <ReactGA.OutboundLink
                         eventLabel="to-nykarlebyvyer"
-                        to={page.url}
+                        to={page.url.replace('http', 'https')}
                         target="_blank"
                     >
                         {page.title}`

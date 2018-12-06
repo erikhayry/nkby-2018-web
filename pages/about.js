@@ -6,7 +6,7 @@ class About extends React.PureComponent {
         return (
             <>
                 <Head>
-                    <title>NKBY- Om</title>
+                    <title>Om | NKBY</title>
                 </Head>
                 <h1>Om nkby</h1>
                 <p>All data här hämtad från <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> och sidan skulle inte vara möjlig utan Fredrik Liljeströms fantastiska jobb</p>
