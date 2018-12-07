@@ -15,6 +15,7 @@ const PageList = ({pages = []}) =>
                         eventLabel="to-nykarlebyvyer"
                         to={page.url.replace('http', 'https')}
                         target="_blank"
+                        rel="noopener"
                     >
                         {page.title}`
                     </ReactGA.OutboundLink>s
