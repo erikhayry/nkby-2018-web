@@ -1,35 +1,43 @@
+$color-primary: rgb(248, 198, 196);
+$color-secondary: rgb(9, 43, 67);
+
+*{
+  box-sizing: border-box;
+}
+
 body {
-  color: #222;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: $color-primary;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 300;
+  background-color: $color-secondary;
 }
 
-button {
-  border: none;
-  background-color: #fff;
+ul, ol{
+  padding: 0;
+  margin: 0;
 }
 
-.visible-hidden {
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+li{
+  list-style-type: none;
 }
 
-.visible-hidden:focus {
-  clip: auto;
-  height: auto;
-  overflow: auto;
-  position: absolute;
-  width: auto;
+a{
+  color: $color-primary;
+  text-decoration: none;
 }
 
-.lazyload-placeholder{
-  display: none;
+h1, h2{
+  font-family: 'Playfair Display', serif;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 0;
 }
 
-.js .lazyload-placeholder{
-  display: block;
+h1{
+  margin-bottom: 1rem;
+}
+
+img{
+  max-width: 100%;
 }

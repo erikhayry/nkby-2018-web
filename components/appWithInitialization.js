@@ -36,7 +36,7 @@ export const appWithInitialization = App => {
 
       return <>
         <a href="#main" className="visible-hidden">{skipToContentCopy || 'Gå direkt till innehåll'}</a>
-        <nav>
+        <nav className="main-nav">
             {pathname !== '/about' && <Link href="/about" as="/om">
                 <a aria-label="information om sidan">Om</a>
             </Link>}

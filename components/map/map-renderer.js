@@ -1,7 +1,7 @@
 import React from "react"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel"
-import theme from '../../data/themes/dark.json';
+import theme from '../../data/themes/light.json';
 
 function renderIcon(url){
     return {
@@ -24,13 +24,11 @@ function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMark
         const { name, position } = locale;
 
         return position ? <MarkerWithLabel
+            labelClass="map--marker-label"
             key={id}
             position={position}
             labelAnchor={{x: 0, y: 0}}
             labelStyle={{
-                backgroundColor: "yellow",
-                fontSize: "14px",
-                padding: "16px",
                 visibility: id === activeMarker ? 'visible' : 'hidden'
             }}
             zIndex={id === activeMarker ? 1 : 0}
@@ -69,7 +67,7 @@ const MapRenderer = (props) => {
 
     return (
         <>
-            {showFindMeButton && <button onClick={props.setLocation} aria-label="Hitta min position på kartan">Hitta mig</button>}
+            {false && showFindMeButton && <button onClick={props.setLocation} aria-label="Hitta min position på kartan">Hitta mig</button>}
             <GoogleMap
                 defaultZoom={zoom || 12}
                 defaultCenter={position || { lat: 63.5217687, lng: 22.5216011 }}

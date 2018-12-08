@@ -21,7 +21,7 @@ class Image extends React.Component {
         const {src, alt, height = 200} = this.props;
 
         if(src){            
-            const imageEl = <img src={parseImageSrc(src)} alt={alt} />;
+            const imageEl = <img {...this.props} src={parseImageSrc(src)} />;
 
             return (
                 <>

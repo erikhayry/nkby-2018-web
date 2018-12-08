@@ -32,18 +32,14 @@ class Locale extends React.PureComponent {
                 </Head>
                 <h1>{locale.name}</h1>
                 <StaticMap currentLocale={locale} localesNearby={localesNearby}/>
-                <br/>
-                <a href="#nearby-locales" aria-label="Gå till lista med närliggande adresser">Närliggande adresser</a>
-
                 <PageList pages={locale.pages} />
-
                 <h2 id="nearby-locales">Närliggande adresser</h2>
-                <ol>
+                <ol className="nearby-list">
                     {localesNearby.map(({id, name, numberOfPages}, i) => {
                         return (
-                            <li key={i}>
+                            <li key={i} className="nearby-list--item">
                                 <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
-                                    <a>{name} [{numberOfPages}]</a>
+                                    <a>{name} ({numberOfPages})</a>
                                 </Link>
                             </li>
                         )
@@ -51,13 +47,13 @@ class Locale extends React.PureComponent {
                 </ol>
 
                 <Link href="/">
-                    <a aria-label="tillbaka till kartan">Tillbaka</a>
+                    <a aria-label="tillbaka till kartan" className="back-btn">Tillbaka</a>
                 </Link>
             </>
         )
 
     }
-};
+}
 
 Locale.getInitialProps = async function (context) {
     const { id } = context.query;

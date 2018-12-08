@@ -17,7 +17,7 @@ class MyApp extends App {
         const { Component, pageProps } = this.props;
         return (
             <Container>
-                <main id="main">
+                <main id="main" className="main">
                     <PageTransition timeout={300} classNames="page-transition">
                             <Component {...pageProps} />
                     </PageTransition>

@@ -9,6 +9,7 @@ export default class MyDocument extends Document {
             <meta charSet="utf-8" />
             <meta name="description" content="Ett sökverktyg för nykarlebyvyer.nu. Hitta och läs om historiska platser och personer i Nykarleby" />
             <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
+            <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet" ></link>
         </Head>
         <body>
           <Main />

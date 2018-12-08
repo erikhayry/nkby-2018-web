@@ -1,0 +1,78 @@
+.main-nav{
+  display: none;
+}
+
+.main{
+  padding-bottom: 1rem;
+}
+
+
+/*
+  abc-nav
+ */
+
+.abc-nav{
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+}
+
+.abc-nav--item{
+  width: 30px;
+  height: 30px;
+  padding: 0.5rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.abc-list--item-heading{
+  padding: 0 1rem;
+  text-transform: uppercase;
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.abc-list--item{
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+}
+
+/*
+  Locale list
+ */
+
+.page-list{
+  padding: 1rem;
+}
+
+.page-list--item{
+  margin-bottom: 2rem;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.page-list--item-image{
+  display: block;
+  margin: 0 auto;
+}
+
+.page-list--item-description{
+  background-color: $color-primary;
+  color: $color-secondary;
+  padding: 0.75rem;
+  display: block;
+}
+
+/*
+  Nearby list
+ */
+
+.nearby-list{
+  margin-bottom: 1rem;
+}
+
+.nearby-list--item{
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+}
