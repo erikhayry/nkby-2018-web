@@ -24,6 +24,10 @@ li{
 a{
   color: $color-primary;
   text-decoration: none;
+
+  &:visited{
+    color: lighten($color-primary, 10);
+  }
 }
 
 h1, h2{

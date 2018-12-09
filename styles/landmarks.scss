@@ -48,8 +48,9 @@
 }
 
 .page-list--item{
-  margin-bottom: 2rem;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 0 auto 2rem;
 }
 
 .page-list--item-image{

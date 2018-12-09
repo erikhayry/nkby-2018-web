@@ -9,7 +9,7 @@ function getVisible({position}){
 }
 
 export default (props) => {
-    const {currentLocale = {}, localesNearby = []} = props;
+    const {currentLocale = {}, localesNearby = [], width = 200, height = 200, zoom = '', mapClassName = ''} = props;
     const { position } = currentLocale;
 
     let markers = position ? `&markers=${position.lat},${position.lng}` : '';
@@ -20,9 +20,9 @@ export default (props) => {
 
     return (
         <img
-            className="map--small"
-            src={`https://maps.googleapis.com/maps/api/staticmap?center=${center}&style=${style}&size=200x200${markers}&visible=${visible}&key=${process.env.GOOGLE_STATIC_MAPS_API}`}
-            alt={`Karta med ${currentLocale.name} markerad och de närliggande adressserna ${localesNearby.map(({name}) => name).join(',')}`}
+            className={`map--small ${mapClassName}`}
+            src={`https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${zoom}&style=${style}&size=${width}x${height}&scale=2&${markers}&visible=${visible}&key=${process.env.GOOGLE_STATIC_MAPS_API}`}
+            alt={`Karta med ${currentLocale.name} markerad`}
         />
     )
 }

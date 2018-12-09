@@ -26,30 +26,41 @@ class Locale extends React.PureComponent {
             return <ErrorPage statusCode={error} />
         }
         return (
-            <>
+            <div className="locale">
                 <Head>
                     <title>{`${capitalize(locale.name)} | NKBY`}</title>
                 </Head>
-                <h1>{locale.name}</h1>
-                <StaticMap currentLocale={locale} localesNearby={localesNearby}/>
-                <PageList pages={locale.pages} />
-                <h2 id="nearby-locales">Närliggande adresser</h2>
-                <ol className="nearby-list">
-                    {localesNearby.map(({id, name, numberOfPages}, i) => {
-                        return (
-                            <li key={i} className="nearby-list--item">
-                                <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
-                                    <a>{name} ({numberOfPages})</a>
-                                </Link>
-                            </li>
-                        )
-                    })}
-                </ol>
+                <div className="locale--map-wrapper">
+                    <StaticMap
+                        currentLocale={locale}
+                        localesNearby={localesNearby}
+                        width={1000}
+                        height={200}
+                        zoom={14}
+                        mapClassName="locale--map"
+                    />
+                </div>
+                <div className="locale--content">
+                    <h1 className="locale--title">{locale.name}</h1>
+                    <PageList pages={locale.pages} />
+                    <h2 id="nearby-locales">Närliggande adresser</h2>
+                    <ol className="nearby-list">
+                        {localesNearby.map(({id, name, numberOfPages}, i) => {
+                            return (
+                                <li key={i} className="nearby-list--item">
+                                    <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
+                                        <a>{name} ({numberOfPages})</a>
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                    </ol>
 
-                <Link href="/">
-                    <a aria-label="tillbaka till kartan" className="back-btn">Tillbaka</a>
-                </Link>
-            </>
+                    <Link href="/">
+                        <a aria-label="tillbaka till kartan" className="back-btn">Tillbaka</a>
+                    </Link>
+                </div>
+            </div>
         )
 
     }
