@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 
 const styleConfig = {
     cssModules: true,
@@ -33,9 +32,10 @@ module.exports = (phase, { defaultConfig }) => {
     console.log('phase', phase)
     if (phase === PHASE_PRODUCTION_SERVER) {
         // Config used to run in production.
-        return babelConf;
+        return {};
     }
 
+    const webpack = require('webpack');
     const withSass = require('@zeit/next-sass');
 
     return withSass({
