@@ -8,6 +8,8 @@ import PageList from '../components/page-list.js';
 import ErrorPage from 'next/error'
 import store from '../utils/store'
 
+const MAP_HEIGHT = 200;
+const MAP_WIDTH = 640;
 
 class Locale extends React.PureComponent {
     componentDidMount(){
@@ -21,34 +23,42 @@ class Locale extends React.PureComponent {
     render() {
         const {error, locale = {}, localesNearby = []} = this.props;
 
-
         if (error) {
             return <ErrorPage statusCode={error} />
         }
         return (
-            <div className="locale">
+            <div className="locale" style={{
+                paddingTop: MAP_HEIGHT
+            }}>
                 <Head>
                     <title>{`${capitalize(locale.name)} | NKBY`}</title>
                 </Head>
-                <div className="locale--map-wrapper">
+                <div className="locale--map-wrapper" style={{
+                    height: MAP_HEIGHT
+                }}>
                     <StaticMap
                         currentLocale={locale}
                         localesNearby={localesNearby}
-                        width={1000}
-                        height={200}
+                        width={MAP_WIDTH}
+                        height={MAP_HEIGHT}
                         zoom={14}
                         mapClassName="locale--map"
+                        style={{
+                            marginLeft: -MAP_WIDTH/2,
+                            width: MAP_WIDTH,
+                            height: MAP_HEIGHT,
+                        }}
                     />
                 </div>
                 <div className="locale--content">
                     <h1 className="locale--title">{locale.name}</h1>
                     <PageList pages={locale.pages} />
                     <h2 id="nearby-locales">Närliggande adresser</h2>
-                    <ol className="nearby-list">
+                    <ol className="nearby-list locale--nearby-list">
                         {localesNearby.map(({id, name, numberOfPages}, i) => {
                             return (
                                 <li key={i} className="nearby-list--item">
-                                    <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
+                                    <Link prefetch href={`/locale?id=${id}&from=locale`} as={`/locale/${id}?from=locale:${locale.id}`} >
                                         <a>{name} ({numberOfPages})</a>
                                     </Link>
                                 </li>

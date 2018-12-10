@@ -9,7 +9,7 @@ function getVisible({position}){
 }
 
 export default (props) => {
-    const {currentLocale = {}, localesNearby = [], width = 200, height = 200, zoom = '', mapClassName = ''} = props;
+    const {currentLocale = {}, localesNearby = [], width = 200, height = 200, zoom = '', mapClassName = '', style = {}} = props;
     const { position } = currentLocale;
 
     let markers = position ? `&markers=${position.lat},${position.lng}` : '';
@@ -23,6 +23,7 @@ export default (props) => {
             className={`map--small ${mapClassName}`}
             src={`https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${zoom}&style=${style}&size=${width}x${height}&scale=2&${markers}&visible=${visible}&key=${process.env.GOOGLE_STATIC_MAPS_API}`}
             alt={`Karta med ${currentLocale.name} markerad`}
+            style={style}
         />
     )
 }

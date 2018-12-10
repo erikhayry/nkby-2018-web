@@ -17,17 +17,17 @@ const LocalesList = ({locales = []}) => {
                 if(position){
                     const firstLetter = name[0];
                     const firstOnLetterLocale = sortedLocales.find(({name}) => firstLetter === name[0]);
-                    const heading = firstOnLetterLocale.id === id ? <h2 id={firstLetter} key={firstLetter} className="abc-list--item-heading">{firstLetter}</h2> : null;
+                    const heading = firstOnLetterLocale.id === id ? <h2 id={firstLetter} className="abc-list--item-heading">{firstLetter}</h2> : null;
 
                     return (
-                        <>
+                        <div key={id}>
                             {heading}
-                            <div key={id} className="abc-list--item">
+                            <div className="abc-list--item">
                                 <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
                                     <a>{name} ({numberOfPages})</a>
                                 </Link>
                             </div>
-                        </>
+                        </div>
                     )
                 }
 

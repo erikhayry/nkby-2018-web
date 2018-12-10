@@ -22,7 +22,7 @@ export const appWithInitialization = App => {
         const isDev = process.env.NODE_ENV !== 'production';
         if (!isDev) {
             ReactGA.initialize('UA-129661075-1', {
-                debug: true,
+                debug: false,
                 titleCase: false
             });
             Sentry.init({
@@ -32,7 +32,7 @@ export const appWithInitialization = App => {
     }
 
     render() {
-      const {router: {pathname}, pageProps: {skipToContentCopy}} = this.props;
+      const {router: {pathname}, clientWidth,  pageProps: {skipToContentCopy}} = this.props;
 
       return <>
         <a href="#main" className="visible-hidden">{skipToContentCopy || 'Gå direkt till innehåll'}</a>

@@ -1,16 +1,32 @@
 /*
+  Animation
+ */
+
+.page-transition-enter-done{
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+.page-transition-enter {}
+.page-transition-enter-active {
+  opacity: 0;
+}
+.page-transition-exit {}
+.page-transition-exit-active {
+  opacity: 0;
+}
+
+/*
   Locale
  */
 
 .locale{
-  padding-top: 200px;
+  padding-bottom: 1rem;
 }
 
 .locale--content{
   background-color: $color-secondary;
   position: relative;
   z-index: 1;
-  box-shadow: -3px 2px 5px 2px rgba(0,0,0,1);
 }
 
 .locale--title{
@@ -35,17 +51,18 @@
 
 .locale--map-wrapper{
   width: 100%;
-  height: 200px;
   position: fixed;
   top: 0;
-  background-color: #f2f2f2;
+  background-color: #efeeec;
 }
 
 .locale--map{
   max-width: none;
   position: absolute;
   left: 50%;
-  margin-left: -320px;
-  width: 640px;
-  height: 200px;
+}
+
+.locale--nearby-list{
+  max-width: 800px;
+  margin: 0 auto;
 }
