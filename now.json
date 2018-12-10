@@ -1,8 +1,16 @@
 {
-  "version": 1,
+  "version": 2,
   "env": {
     "GOOGLE_MAPS_API": "@google_maps_api",
     "GOOGLE_STATIC_MAPS_API": "@google_static_maps_api"
   },
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" },
+    { "src": "lib/*.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ],
   "alias": ["nkby.now.sh"]
 }
