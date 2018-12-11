@@ -9,7 +9,7 @@ function getVisible({position}){
 }
 
 function getSrc(position, localesNearby, width, height, zoom){
-    let markers = position ? `&markers=${position.lat},${position.lng}` : '';
+    let markers = position ? `&markers=icon:https://www.dropbox.com/s/ajc92ltaq1rzprf/marker.png?dl=1|${position.lat},${position.lng}` : '';
     //markers = localesNearby.map(getLaballedMarker).join('') + markers;
     //const visible = localesNearby.map(getVisible).join('|');
 
@@ -27,6 +27,7 @@ function getStyle(mapClassName, defaultWidth, widths){
     const defaultStyle = `
         .${mapClassName}{
             width: ${defaultWidth}px;
+            margin-left: -${defaultWidth/2}px;
          } 
     `;
 
@@ -37,11 +38,12 @@ function getStyle(mapClassName, defaultWidth, widths){
               @media (min-width: ${width}px) {
                 .${mapClassName}{
                     width: ${width}px;
+                    margin-left: -${width/2}px;
                 } 
               }  
             `
         })
-        .join('')
+        .join('');
 
     return defaultStyle + mediaQueries
 
@@ -61,7 +63,6 @@ export default (props) => {
                 className={`map--small ${mapClassName}`}
                 src={getSrc(position, localesNearby, defaultWidth, height, zoom)}
                 alt={`Karta över Nykarleby med ${currentLocale.name} markerad`}
-                srcSet={getSrcSet(position, localesNearby, widths, height, zoom)}
                 height={height}
                 style={style}
             />

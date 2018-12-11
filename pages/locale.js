@@ -9,7 +9,7 @@ import ErrorPage from 'next/error'
 import store from '../utils/store'
 
 const MAP_HEIGHT = 200;
-const MAP_WIDTHS = [320, 375, 640]
+const MAP_WIDTHS = [640];
 
 class Locale extends React.PureComponent {
     componentDidMount(){
