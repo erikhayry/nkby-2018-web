@@ -16,6 +16,24 @@
 }
 
 /*
+  Index
+ */
+
+
+.index--content{
+  background-color: $color-secondary;
+  position: relative;
+  z-index: 1;
+}
+
+.index--map-wrapper{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #f2f2f2;
+}
+
+/*
   Locale
  */
 
@@ -32,11 +50,11 @@
 .locale--title{
   position: relative;
   overflow: visible;
-  padding-top: 40px;
+  padding-top: 2rem;
 
   &:after{
     content: '';
-    display: block;
+    display: none;
     width: 80px;
     height: 80px;
     background-color: $color-secondary;
@@ -53,13 +71,12 @@
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: #efeeec;
+  background-color: #f2f2f2;
 }
 
 .locale--map{
   max-width: none;
-  position: absolute;
-  left: 50%;
+  height: 200px;
 }
 
 .locale--nearby-list{

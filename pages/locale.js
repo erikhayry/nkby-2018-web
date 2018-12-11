@@ -9,7 +9,7 @@ import ErrorPage from 'next/error'
 import store from '../utils/store'
 
 const MAP_HEIGHT = 200;
-const MAP_WIDTH = 640;
+const MAP_WIDTHS = [320, 375, 640]
 
 class Locale extends React.PureComponent {
     componentDidMount(){
@@ -39,15 +39,10 @@ class Locale extends React.PureComponent {
                     <StaticMap
                         currentLocale={locale}
                         localesNearby={localesNearby}
-                        width={MAP_WIDTH}
+                        widths={MAP_WIDTHS}
                         height={MAP_HEIGHT}
                         zoom={14}
                         mapClassName="locale--map"
-                        style={{
-                            marginLeft: -MAP_WIDTH/2,
-                            width: MAP_WIDTH,
-                            height: MAP_HEIGHT,
-                        }}
                     />
                 </div>
                 <div className="locale--content">

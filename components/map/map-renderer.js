@@ -6,17 +6,18 @@ import theme from '../../data/themes/light.json';
 function renderIcon(url){
     return {
         url,
-        size: new google.maps.Size(22, 40),
-        labelOrigin: new google.maps.Point(11, 12)
+        scaledSize: new google.maps.Size(22, 40),
+        labelOrigin: new google.maps.Point(11, 12),
+        anchor: new google.maps.Point(11, 40),
     }
 }
 
 function getIcon(id, visitedLocales = []){
     if(visitedLocales.includes(id)){
-        return renderIcon('/static/images/markers/white.png')
+        return renderIcon('/static/images/markers/marker-visited.png')
     }
 
-    return null
+    return renderIcon('/static/images/markers/marker.png')
 }
 
 function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMarker, handleMarkerEvent, enableUserInteractions = true){

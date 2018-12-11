@@ -8,22 +8,63 @@ function getVisible({position}){
     return `${position.lat},${position.lng}`
 }
 
-export default (props) => {
-    const {currentLocale = {}, localesNearby = [], width = 200, height = 200, zoom = '', mapClassName = '', style = {}} = props;
-    const { position } = currentLocale;
-
+function getSrc(position, localesNearby, width, height, zoom){
     let markers = position ? `&markers=${position.lat},${position.lng}` : '';
     //markers = localesNearby.map(getLaballedMarker).join('') + markers;
+    //const visible = localesNearby.map(getVisible).join('|');
 
-    const visible = localesNearby.map(getVisible).join('|');
     const center = position ? `${position.lat},${position.lng}` : `63.5217687,22.5216011`;
 
+    return `https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${zoom}&style=${style}&size=${width}x${height}&scale=2&${markers}&key=${process.env.GOOGLE_STATIC_MAPS_API}`
+}
+
+function getSrcSet(position, localesNearby, widths, height, zoom){
+    return widths.map(width => `${getSrc(position, localesNearby, width, height, zoom)} ${width}w`).join(',')
+}
+
+function getStyle(mapClassName, defaultWidth, widths){
+
+    const defaultStyle = `
+        .${mapClassName}{
+            width: ${defaultWidth}px;
+         } 
+    `;
+
+    const mediaQueries = widths
+        .filter(width => width !== defaultWidth)
+        .map(width => {
+            return `
+              @media (min-width: ${width}px) {
+                .${mapClassName}{
+                    width: ${width}px;
+                } 
+              }  
+            `
+        })
+        .join('')
+
+    return defaultStyle + mediaQueries
+
+}
+
+export default (props) => {
+    const {currentLocale = {}, localesNearby = [], widths = [], height = 200, zoom = '', mapClassName = '', style = {}} = props;
+    const { position } = currentLocale;
+    const defaultWidth = widths[0]
+
     return (
-        <img
-            className={`map--small ${mapClassName}`}
-            src={`https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${zoom}&style=${style}&size=${width}x${height}&scale=2&${markers}&visible=${visible}&key=${process.env.GOOGLE_STATIC_MAPS_API}`}
-            alt={`Karta med ${currentLocale.name} markerad`}
-            style={style}
-        />
+        <>
+            <style jsx>{`
+              ${getStyle(mapClassName, defaultWidth, widths)}
+            `}</style>
+            <img
+                className={`map--small ${mapClassName}`}
+                src={getSrc(position, localesNearby, defaultWidth, height, zoom)}
+                alt={`Karta över Nykarleby med ${currentLocale.name} markerad`}
+                srcSet={getSrcSet(position, localesNearby, widths, height, zoom)}
+                height={height}
+                style={style}
+            />
+        </>
     )
 }
