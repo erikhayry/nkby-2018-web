@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import * as Sentry from '@sentry/browser';
-import Link from 'next/link';
+import Nav from './nav';
 import '../styles/global.scss'
 
 export const appWithInitialization = App => {
   return class AppWithUser extends React.Component {
+
+
     static async getInitialProps(appContext) {
       let appProps = {};
       if (typeof App.getInitialProps === 'function') {
@@ -32,21 +34,13 @@ export const appWithInitialization = App => {
     }
 
     render() {
-      const {router: {pathname}, clientWidth,  pageProps: {skipToContentCopy}} = this.props;
+    const {router: {pathname}, pageProps: {skipToContentCopy}} = this.props;
 
-      return <>
+    return <div>
         <a href="#main" className="visible-hidden">{skipToContentCopy || 'Gå direkt till innehåll'}</a>
-        <nav className="main-nav">
-            {pathname !== '/about' && <Link href="/about" as="/om">
-                <a aria-label="information om sidan">Om</a>
-            </Link>}
-            <br/>
-            {pathname !== '/' && <Link href="/">
-                <a aria-label="startsida med karta">Startsidan</a>
-            </Link>}
-        </nav>
+        <Nav pathname={pathname} ></Nav>
         <App {...this.props} role="main"/>
-      </>
+    </div>
     }
   };
 };

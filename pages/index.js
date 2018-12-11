@@ -8,6 +8,7 @@ import Head from 'next/head'
 const MAP_HEIGHT = 500;
 
 class App extends React.PureComponent {
+
     onZoomChanged(zoom){
         store.set('zoom', zoom)
     }
@@ -23,29 +24,34 @@ class App extends React.PureComponent {
         const position = store.get('position');
 
         return (
-            <div className="index" style={{
-                paddingTop: MAP_HEIGHT
-            }}>
-                <Head>
-                    <title>Start | NKBY</title>
-                </Head>
-                <div className="index--map-wrapper" style={{
-                    height: MAP_HEIGHT
-                }}>
-                    <Map
-                        locales={locales}
-                        visitedLocales={visitedLocales}
-                        zoom={zoom}
-                        position={position}
-                        style={{height: `${MAP_HEIGHT}px`}}
-                        onDragEnd={this.onDragEnd}
-                        onZoomChanged={this.onZoomChanged}
-                    />
+            <>
+                <style jsx="true">{`
+                      .js .index{
+                        padding-top: ${MAP_HEIGHT}px;
+                      }
+                    `}</style>
+                <div className="index">
+                    <Head>
+                        <title>Start | NKBY</title>
+                    </Head>
+                    <div className="index--map-wrapper" style={{
+                        height: MAP_HEIGHT
+                    }}>
+                        <Map
+                            locales={locales}
+                            visitedLocales={visitedLocales}
+                            zoom={zoom}
+                            position={position}
+                            style={{height: `${MAP_HEIGHT}px`}}
+                            onDragEnd={this.onDragEnd}
+                            onZoomChanged={this.onZoomChanged}
+                        />
+                    </div>
+                    <div className="index--content">
+                        <LocalesList locales={locales}  />
+                    </div>
                 </div>
-                <div className="index--content">
-                    <LocalesList locales={locales}  />
-                </div>
-            </div>
+            </>
         )
     }
 }

@@ -1,10 +1,153 @@
-.main-nav{
-  display: none;
-}
-
 .main{
   padding-bottom: 1rem;
 }
+
+/*
+  main nav
+ */
+
+$burger-height: 60px; //Height (and width) of the burger menu
+$burger-border-width: 2px; //Width of the borders and 'buns'
+$burger-bun-width: 25px; //Width of the 'buns'
+$burger-bun-height: $burger-border-width; //Height of the 'buns'
+$burger-border-radius: 50%; //Change the border radius of the menu
+
+$burger-bun-width-half: ($burger-bun-width / 2); //Half bun width used for calculation
+$burger-pad-left: ($burger-height / 2 - $burger-bun-width-half - 2); //Horizontally centers bun in menu
+$burger-pad-top: ($burger-height / 2 - $burger-bun-width-half); //Vertically centers bun in menu
+
+.main-nav{
+  background-color: #fff;
+  text-align: center;
+}
+.main-nav--item {
+  background-color: #fff;
+  padding: 1rem;
+  color: $color-secondary;
+  min-width: 110px;
+  max-width: 200px;
+  display: inline-block;
+  text-align: center;
+  transition: $transition;
+  position: relative;
+
+  &:visited{
+    color: $color-secondary
+  }
+
+  &.is-active{
+    background-color: $color-primary;
+    color: $color-secondary;
+  }
+
+  &:hover{
+    background-color: $color-primary;
+    color: $color-secondary;
+  }
+}
+
+.js{
+  .main-nav{
+    background-color: transparent;
+    position: absolute;
+    left: -100%;
+    top: 6rem;
+    z-index: 2;
+    transition: $transition;
+  }
+
+  .open .main-nav{
+    left: 1rem;
+  }
+
+  .main-nav--item {
+    border-radius: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+
+    &:visited{
+      color: $color-secondary
+    }
+
+    &.is-active{
+      background-color: $color-primary;
+      color: $color-secondary;
+    }
+
+    &:hover{
+      background-color: $color-primary;
+      color: $color-secondary;
+    }
+  }
+
+  .open{
+    .main-nav--item{
+    }
+  }
+
+  .main-nav-btn{
+    background: #fff;
+    border: #fff solid $burger-border-width;
+    border-radius: $burger-border-radius;
+    cursor: pointer;
+    display: inline-block;
+    height: $burger-height;
+    padding-left: $burger-pad-left;
+    padding-top: $burger-pad-top;
+    position: absolute;
+    transition: $transition;
+    user-select: none;
+    width: $burger-height;
+    z-index: 12;
+    left: 1rem;
+    top: 1rem;
+
+    &:hover {
+      border: $color-secondary solid $burger-border-width;
+    }
+  }
+
+  .main-nav-icon {
+    background: $color-secondary;
+    position: relative;
+    transition: $transition;
+
+    &--top {
+      height: $burger-bun-height;
+      top: 0;
+      width: $burger-bun-width;
+    }
+
+    &--mid {
+      height: $burger-bun-height;
+      top: 8px;
+      width: $burger-bun-width;
+    }
+
+    &--bottom {
+      height: $burger-bun-height;
+      top: 16px;
+      width: $burger-bun-width;
+    }
+  }
+
+  .open{
+    .main-nav-icon--top {
+      top: 9px;
+      transform: rotate(45deg);
+    }
+
+    .main-nav-icon--mid {
+      opacity: 0;
+    }
+
+    .main-nav-icon--bottom {
+      top: 5px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
 
 
 /*
@@ -21,11 +164,23 @@
 }
 
 .abc-nav--item{
-  width: 30px;
-  height: 30px;
-  padding: 0.5rem;
   display: inline-block;
   text-align: center;
+}
+
+.abc-nav--link{
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 0.5rem;
+  transition: $transition;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+
+  &:hover{
+    background-color: rgba(0,0,0,0.5);
+  }
+
 }
 
 .abc-list--item-heading{
@@ -34,10 +189,20 @@
   text-align: left;
   margin: 1rem 0;
 }
-
-.abc-list--item{
+.abc-list--link{
+  transition: $transition;
   padding: 0.5rem 1rem;
   text-transform: capitalize;
+  display: block;
+  &:hover{
+    padding-left: 1.25rem;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  &:active{
+    background-color: $color-primary;
+    color: $color-secondary;
+  }
 }
 
 /*
@@ -74,7 +239,18 @@
   margin-bottom: 1rem;
 }
 
-.nearby-list--item{
+.nearby-list--link{
+  transition: $transition;
   padding: 0.5rem 1rem;
   text-transform: capitalize;
+  display: block;
+  &:hover{
+    padding-left: 1.25rem;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  &:active{
+    background-color: $color-primary;
+    color: $color-secondary;
+  }
 }

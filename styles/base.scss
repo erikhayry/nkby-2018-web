@@ -1,5 +1,7 @@
 $color-primary: rgb(248, 198, 196);
 $color-secondary: rgb(9, 43, 67);
+$transition-speed: .4s; //Transition speed settings
+$transition: all $transition-speed ease; //Transitions
 
 *{
   box-sizing: border-box;
@@ -44,4 +46,16 @@ h1{
 
 img{
   max-width: 100%;
+}
+
+.back-btn{
+  padding: 1rem;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  transition: $transition;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  &:hover{
+    border-bottom-color: $color-primary
+  }
 }

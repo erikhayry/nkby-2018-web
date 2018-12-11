@@ -8,8 +8,8 @@ const LocalesList = ({locales = []}) => {
     return (
         <>
             <ul role="navigation" className="abc-nav">
-                {letterList.map((letter, i) => <li key={i} className="abc-nav--item">
-                    <a href={`#${letter}`}>{letter}</a>
+                {letterList.map((letter, i) => <li key={i} className="abc-nav--item" >
+                    <a href={`#${letter}`} className="abc-nav--link">{letter}</a>
                 </li>)}
             </ul>
 
@@ -23,8 +23,8 @@ const LocalesList = ({locales = []}) => {
                         <div key={id}>
                             {heading}
                             <div className="abc-list--item">
-                                <Link prefetch href={`/locale?id=${id}`} as={`/locale/${id}`} >
-                                    <a>{name} ({numberOfPages})</a>
+                                <Link href={`/locale?id=${id}`} as={`/locale/${id}`} >
+                                    <a className="abc-list--link">{name} ({numberOfPages})</a>
                                 </Link>
                             </div>
                         </div>

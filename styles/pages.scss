@@ -19,7 +19,6 @@
   Index
  */
 
-
 .index--content{
   background-color: $color-secondary;
   position: relative;
@@ -31,6 +30,21 @@
   position: fixed;
   top: 0;
   background-color: #f2f2f2;
+  display: none;
+}
+
+.js .index--map-wrapper{
+  display: block;
+}
+
+/*
+  About
+ */
+
+.about{
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /*
@@ -69,9 +83,12 @@
 
 .locale--map-wrapper{
   width: 100%;
+  background-color: #f2f2f2;
+}
+
+.js .locale--map-wrapper{
   position: fixed;
   top: 0;
-  background-color: #f2f2f2;
 }
 
 .locale--map{
