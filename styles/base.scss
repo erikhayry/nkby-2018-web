@@ -3,6 +3,14 @@ $color-secondary: rgb(9, 43, 67);
 $transition-speed: .4s; //Transition speed settings
 $transition: all $transition-speed ease; //Transitions
 
+/*
+  z indexes
+ */
+
+$z-main-nav-btn: 2;
+$z-splash: 3;
+
+
 *{
   box-sizing: border-box;
 }

@@ -1,0 +1,25 @@
+.splash{
+  background-color: $color-secondary;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: $z-splash;
+  position: absolute;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-image: url('/static/images/bg-1.png'), url('/static/images/bg-2.png');
+  background-position: left 0 bottom 40px, right 0 bottom -30px;
+  background-size: 62px auto, 282px auto;
+}
+
+.splash--title{
+  display: block;
+  color: $color-primary;
+  padding-top: 100px;
+  font-weight: bold;
+  width: 100%;
+  vertical-align: middle;
+  font-size: 4rem;
+  font-family: 'Playfair Display', serif;
+}

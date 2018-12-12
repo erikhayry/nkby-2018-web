@@ -14,10 +14,11 @@ class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, isLoading } = this.props;
+
         return (
             <Container>
-                <main id="main" className="main">
+                <main id="main" className={`main ${isLoading ? 'is-loading' : ''}`}>
                     <PageTransition timeout={0} classNames="page-transition">
                         <Component {...pageProps} />
                     </PageTransition>
