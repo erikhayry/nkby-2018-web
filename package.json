@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "node lib/server.js",
+    "dev": "NODE_ENV=dev node lib/server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node lib/server.js"
+    "start": "node lib/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,17 +15,18 @@
     "cookie": "^0.3.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.1.0",
-    "express": "^4.16.4",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^7.0.2",
     "next-page-transitions": "^1.0.0-alpha.4",
-    "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0",
+    "next-server": "^0.0.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-ga": "^2.5.3",
     "react-google-maps": "^9.4.5",
     "react-lazyload": "^2.3.0"
   },
   "devDependencies": {
+    "express": "^4.16.4",
     "node-sass": "^4.10.0"
   }
 }

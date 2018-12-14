@@ -3,7 +3,8 @@ import ReactGA from 'react-ga';
 import MapRenderer from './map-renderer';
 import ErrorBoundary from '../error-boundary'
 import Router from 'next/router'
-import store from '../../utils/store'
+
+const GOOGLE_MAPS_API = 'AIzaSyCFy3CNUN5wD31kqxr6fuBPmlSHMh9hcsw';
 
 class Map extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class Map extends React.Component {
         Router.push({
             pathname: '/locale',
             query: {id},
-        }, `/locale/${id}`)
+        })
     }
 
     setActiveMarker(id){
@@ -99,7 +100,7 @@ class Map extends React.Component {
                     setLocation={this.setLocation}
                     setActiveMarker={this.setActiveMarker}
                     userPosition={userPosition}
-                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&v=3.exp&librarie=geometry,drawing,places`}
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API}&v=3.exp&librarie=geometry,drawing,places`}
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div style={{ height: `100vh`, width: '100%', ...style }} />}
                     mapElement={<div style={{ height: `100%` }} />}

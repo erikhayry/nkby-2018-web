@@ -23,7 +23,7 @@ const LocalesList = ({locales = []}) => {
                         <div key={id}>
                             {heading}
                             <div className="abc-list--item">
-                                <Link href={`/locale?id=${id}`} as={`/locale/${id}`} >
+                                <Link href={`/locale?id=${id}`}>
                                     <a className="abc-list--link">{name} ({numberOfPages})</a>
                                 </Link>
                             </div>

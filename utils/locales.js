@@ -1,11 +1,20 @@
 import fetch from 'isomorphic-unfetch';
 
-function getOrigin() {
-    if(typeof document !== 'undefined'){
-        return document.location.origin
-    } else {
-        return `http://localhost:3000`
+function getOrigin(host) {
+    //is client
+    if(!host && typeof document !== 'undefined'){
+        const origin = document.location.origin;
+
+        //is dev : is prod
+        return origin.indexOf('localhost') > -1 ? `http://localhost:3001` : origin
+    } else if(host && host.indexOf('localhost') > -1){
+
+        //is dev server
+        return `http://localhost:3001`;
     }
+
+    //is prod server
+    return `https://${host}`
 }
 
 function sortByName(a, b){
@@ -20,9 +29,9 @@ function sortByName(a, b){
     return 0;
 }
 
-async function get(url) {
+async function get(host, url) {
     try {
-        const origin = getOrigin();
+        const origin = getOrigin(host);
         const localesJson = await fetch(`${origin}/api/${url}`);
 
         if(localesJson.status === 200){
@@ -35,16 +44,16 @@ async function get(url) {
     }
 }
 
-export async function getLocalesNearby(currentLocaleId, numbersOfResults = 10){
-    return get(`locales-nearby/${currentLocaleId}?numbersOfResults=${numbersOfResults}`);
+export async function getLocalesNearby(host, currentLocaleId, numbersOfResults = 10){
+    return get(host, `locales-nearby/${encodeURI(currentLocaleId)}?numbersOfResults=${numbersOfResults}`);
 }
 
-export async function getLocales() {
-    return get(`locales`);
+export async function getLocales(host) {
+    return get(host, `locales`);
 }
 
-export async function getLocale(id){
-    const locale = await get(`locale/${id}`)
+export async function getLocale(host, id){
+    const locale = await get(host, `locale/${encodeURI(id)}`);
 
     if(locale){
         return {id, ...locale};
