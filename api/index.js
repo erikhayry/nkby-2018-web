@@ -1,5 +1,7 @@
-const dispatch = require('micro-route/dispatch')
+const UrlPattern = require('url-pattern')
 const { send } = require('micro')
+const { router, get } = require('microrouter')
+const cors = require('micro-cors')()
 const locales = require('./locales.json');
 
 // Convert Degress to Radians
@@ -35,7 +37,7 @@ function getLocales(){
 }
 
 function getLocale(id){
-    return locales[id];
+    return locales[decodeURI(id)];
 }
 
 function getLocalesNearby(id, numbersOfResults) {
@@ -65,17 +67,18 @@ function getLocalesNearby(id, numbersOfResults) {
     return undefined
 }
 
-module.exports = dispatch()
-    .dispatch('/api/locale/:id', '*', async (req, res, { params, query }) => {
+module.exports = router(
+    cors(get(new UrlPattern('/api/locale/:id'), async ({params}, res) => {
         send(res, 200, getLocale(params.id))
-    })
-    .dispatch('/api/locales', '*', async (req, res, { params, query }) => {
+    })),
+    cors(get('/api/locales', async (req, res) => {
         send(res, 200, getLocales())
-    })
-    .dispatch('/api/locales-nearby/:id', '*', async (req, res, { params, query }) => {
+    })),
+    cors(get(new UrlPattern('/api/locales-nearby/:id'), async ({ params, query }, res) => {
         const { id } = params;
         const { numbersOfResults } = query;
         const localesNearby = getLocalesNearby(id, numbersOfResults);
 
         send(res, 200, localesNearby)
-    })
+    }))
+);

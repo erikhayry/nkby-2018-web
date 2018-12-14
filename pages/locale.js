@@ -58,7 +58,7 @@ class Locale extends React.PureComponent {
                         {localesNearby.map(({id, name, numberOfPages}, i) => {
                             return (
                                 <li key={i} className="nearby-list--item">
-                                    <Link prefetch href={`/locale?id=${id}&from=locale`} as={`/locale/${id}?from=locale:${locale.id}`} >
+                                    <Link prefetch href={`/locale?id=${id}&from=locale:${locale.id}`} >
                                         <a>{name} ({numberOfPages})</a>
                                     </Link>
                                 </li>
@@ -77,11 +77,13 @@ class Locale extends React.PureComponent {
 }
 
 Locale.getInitialProps = async function (context) {
-    const { id } = context.query;
-    const locale = await getLocale(id);
+    const {query, req = {}} = context;
+    const {headers = {}} = req;
+    const { id } = query;
+    const locale = await getLocale(headers.host, id);
 
     if(locale){
-        const localesNearby = await getLocalesNearby(id, 9);
+        const localesNearby = await getLocalesNearby(headers.host, id, 9);
 
         return { locale, localesNearby }
     }

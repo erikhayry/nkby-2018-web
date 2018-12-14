@@ -8,15 +8,14 @@
     { "src": "api/*", "use": "@now/node" },
     {
       "src": "next.config.js",
-      "use": "@now/next@canary"
+      "use": "@now/next"
     },
     { "src": "static/**/*", "use": "@now/static" }
   ],
   "routes": [
     { "src": "/api/locales", "dest": "/api/index.js" },
     { "src": "/api/locale/(.*)", "dest": "/api/index.js" },
-    { "src": "/api/locales-nearby/(.*)", "dest": "/api/index.js" },
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/api/locales-nearby/(.*)", "dest": "/api/index.js" }
 
   ],
   "alias": ["nkby.now.sh"]
