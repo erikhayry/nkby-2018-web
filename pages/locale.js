@@ -66,7 +66,9 @@ class Locale extends React.PureComponent {
                         </ol>
 
                         <Link href="/">
-                            <a aria-label="tillbaka till kartan" className="back-btn">Tillbaka</a>
+                            <a aria-label="tillbaka till kartan" className="back-btn">
+                                <span className="visible-hidden">Tillbaka</span>
+                            </a>
                         </Link>
                     </div>
                 </div>

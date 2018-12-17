@@ -6,19 +6,39 @@
   }
 }
 
+.footer{
+  display: block;
+  background-color: darken($color-secondary, 5);
+}
+
+.footer-inner{
+  text-align: center;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 1.5rem 5rem;
+}
+
+.footer-inner--name {
+  color: #fff;
+  font-style: italic;
+  &:visited{
+    color: #fff;
+  }
+}
+
 /*
   main nav
  */
 
-$burger-height: 60px; //Height (and width) of the burger menu
-$burger-border-width: 2px; //Width of the borders and 'buns'
-$burger-bun-width: 25px; //Width of the 'buns'
+$burger-height: $btn-round-size; //Height (and width) of the burger menu
+$burger-border-width: $btn-round-border; //Width of the borders and 'buns'
+$burger-bun-width: 20px; //Width of the 'buns'
 $burger-bun-height: $burger-border-width; //Height of the 'buns'
 $burger-border-radius: 50%; //Change the border radius of the menu
 
 $burger-bun-width-half: ($burger-bun-width / 2); //Half bun width used for calculation
 $burger-pad-left: ($burger-height / 2 - $burger-bun-width-half - 2); //Horizontally centers bun in menu
-$burger-pad-top: ($burger-height / 2 - $burger-bun-width-half); //Vertically centers bun in menu
+$burger-pad-top: ($burger-height / 2 - $burger-bun-width-half - 2); //Vertically centers bun in menu
 
 .main-nav{
   background-color: #fff;
@@ -68,6 +88,9 @@ $burger-pad-top: ($burger-height / 2 - $burger-bun-width-half); //Vertically cen
     border-radius: 2rem;
     display: block;
     margin-bottom: 1rem;
+    float: left;
+    padding: 1rem 2rem;
+    clear: both;
 
     &:visited{
       color: $color-secondary
@@ -88,67 +111,55 @@ $burger-pad-top: ($burger-height / 2 - $burger-bun-width-half); //Vertically cen
     .main-nav--item{
     }
   }
+}
 
-  .main-nav-btn{
-    background: #fff;
-    border: #fff solid $burger-border-width;
-    border-radius: $burger-border-radius;
-    cursor: pointer;
-    display: inline-block;
-    height: $burger-height;
-    padding-left: $burger-pad-left;
-    padding-top: $burger-pad-top;
-    position: absolute;
-    transition: $transition;
-    user-select: none;
-    width: $burger-height;
-    z-index: $z-main-nav-btn;
-    left: 1rem;
-    top: 1rem;
+.main-nav-btn{
+  @extend .btn-round;
+  padding-left: $burger-pad-left;
+  padding-top: $burger-pad-top;
+  position: absolute;
+  z-index: $z-main-nav-btn;
+  left: 1rem;
+  top: 1rem;
+}
 
-    &:hover {
-      border: $color-secondary solid $burger-border-width;
-    }
+.main-nav-icon {
+  background: $color-secondary;
+  position: relative;
+  transition: $transition;
+
+  &--top {
+    height: $burger-bun-height;
+    top: 0;
+    width: $burger-bun-width;
   }
 
-  .main-nav-icon {
-    background: $color-secondary;
-    position: relative;
-    transition: $transition;
-
-    &--top {
-      height: $burger-bun-height;
-      top: 0;
-      width: $burger-bun-width;
-    }
-
-    &--mid {
-      height: $burger-bun-height;
-      top: 8px;
-      width: $burger-bun-width;
-    }
-
-    &--bottom {
-      height: $burger-bun-height;
-      top: 16px;
-      width: $burger-bun-width;
-    }
+  &--mid {
+    height: $burger-bun-height;
+    top: 8px;
+    width: $burger-bun-width;
   }
 
-  .open{
-    .main-nav-icon--top {
-      top: 9px;
-      transform: rotate(45deg);
-    }
+  &--bottom {
+    height: $burger-bun-height;
+    top: 16px;
+    width: $burger-bun-width;
+  }
+}
 
-    .main-nav-icon--mid {
-      opacity: 0;
-    }
+.open{
+  .main-nav-icon--top {
+    top: 9px;
+    transform: rotate(45deg);
+  }
 
-    .main-nav-icon--bottom {
-      top: 5px;
-      transform: rotate(-45deg);
-    }
+  .main-nav-icon--mid {
+    opacity: 0;
+  }
+
+  .main-nav-icon--bottom {
+    top: 5px;
+    transform: rotate(-45deg);
   }
 }
 
