@@ -14,7 +14,7 @@ function getOrigin(host) {
     }
 
     //is prod server
-    return `https://${host}`
+    return host ? `https://${host}` : `http://localhost:3001`
 }
 
 function sortByName(a, b){
@@ -50,6 +50,10 @@ export async function getLocalesNearby(host, currentLocaleId, numbersOfResults =
 
 export async function getLocales(host) {
     return get(host, `locales`);
+}
+
+export async function getStatistics(host) {
+    return get(host, `statistics`);
 }
 
 export async function getLocale(host, id){

@@ -1,7 +1,7 @@
 import React from "react"
 import Map from '../components/map';
 import LocalesList from '../components/locales-list';
-import { getLocales } from '../utils/locales'
+import { getLocales } from '../utils/api'
 import store from '../utils/store'
 import Head from 'next/head'
 
@@ -48,7 +48,7 @@ class App extends React.PureComponent {
                         />
                     </div>
                     <div className="index--content">
-                        <LocalesList locales={locales}  />
+                        <LocalesList locales={locales} withABCNav={true}  />
                     </div>
                 </div>
             </>

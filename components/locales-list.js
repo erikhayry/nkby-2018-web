@@ -1,17 +1,29 @@
-import { sortLocalesByName } from '../utils/locales'
+import { sortLocalesByName } from '../utils/api'
 import Link from 'next/link'
 
-const LocalesList = ({locales = []}) => {
-    const sortedLocales = sortLocalesByName(locales).filter(({position}) => position);
+function setHref(id){
+    let ret = {
+        href: `/locale?id=${id}`
+    };
+
+    ret.as = `/locale/${encodeURI(id)}`;
+
+    return ret;
+}
+
+const LocalesList = ({locales = [], withABCNav = false, className}) => {
+    const sortedLocales = withABCNav ? sortLocalesByName(locales).filter(({position}) => position) : locales;
     const letterList = sortedLocales.map(({name}) => name[0]).filter((value, index, self) => self.indexOf(value) === index);
 
     return (
         <>
-            <ul role="navigation" className="abc-nav">
-                {letterList.map((letter, i) => <li key={i} className="abc-nav--item" >
-                    <a href={`#${letter}`} className="abc-nav--link">{letter}</a>
-                </li>)}
-            </ul>
+            {withABCNav &&
+                <ul role="navigation" className="abc-nav">
+                    {letterList.map((letter, i) => <li key={i} className="abc-nav--item" >
+                        <a href={`#${letter}`} className="abc-nav--link">{letter}</a>
+                    </li>)}
+                </ul>
+            }
 
             {sortedLocales.map(({id, name, numberOfPages, position}, i) => {
                 if(position){
@@ -20,10 +32,12 @@ const LocalesList = ({locales = []}) => {
                     const heading = firstOnLetterLocale.id === id ? <h2 id={firstLetter} className="abc-list--item-heading">{firstLetter}</h2> : null;
 
                     return (
-                        <div key={id}>
-                            {heading}
+                        <div key={id} className={className}>
+                            {withABCNav && <>
+                                {heading}
+                            </>}
                             <div className="abc-list--item">
-                                <Link href={`/locale?id=${id}`}>
+                                <Link {...setHref(id)}>
                                     <a className="abc-list--link">{name} ({numberOfPages})</a>
                                 </Link>
                             </div>

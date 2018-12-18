@@ -111,9 +111,14 @@ $burger-pad-top: ($burger-height / 2 - $burger-bun-width-half - 2); //Vertically
     .main-nav--item{
     }
   }
+
+  .main-nav-btn {
+    opacity: 1;
+  }
 }
 
 .main-nav-btn{
+  opacity: 0;
   @extend .btn-round;
   padding-left: $burger-pad-left;
   padding-top: $burger-pad-top;

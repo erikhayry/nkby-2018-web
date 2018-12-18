@@ -18,35 +18,22 @@ export const appWithInitialization = App => {
         }
 
         static async getInitialProps(appContext) {
-            const {ctx: req} = appContext;
             let appProps = {};
             if (typeof App.getInitialProps === 'function') {
                 appProps = await App.getInitialProps.call(App, appContext);
 
-                const {pathname, query} = req;
-                let showSplash = true;
-
-                if (req.req) {
-                    const cookie = require('cookie');
-                    if (req.req.headers && req.req.headers.cookie) {
-                        const { splash } = cookie.parse(req.req.headers.cookie);
-                        showSplash = splash !== 'false';
-                    }
-                }
-
                 return {
-                    ...appProps,
-                    showSplash: showSplash && query.splash !== 'false' && pathname === '/'
+                    ...appProps
                 };
             }
         }
 
         componentDidMount(){
             document.documentElement.className = "js";
-            const isDev = process.env.NODE_ENV === 'dev';
+            const isDev = process.env.NODE_ENV === 'development';
             if (!isDev) {
                 ReactGA.initialize('UA-129661075-1', {
-                    debug: false,
+                    debug: true,
                     titleCase: false
                 });
                 Sentry.init({
@@ -62,9 +49,8 @@ export const appWithInitialization = App => {
         }
 
         render() {
-            const {router: {pathname}, pageProps: {skipToContentCopy}, showSplash} = this.props;
-            const { isLoading, showBackToTop } = this.state;
-            const showContent = !isLoading || !showSplash;
+            const {router: {pathname}, pageProps: {skipToContentCopy}} = this.props;
+            const showContent = true;
 
             return (
                 <>

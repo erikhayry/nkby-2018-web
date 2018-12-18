@@ -1,3 +1,23 @@
+const locales = require('./api/locales.json');
+
+const exportPathMap = async function (defaultPathMap) {
+    const localePaths = {};
+
+    Object.keys(locales)
+        .forEach(key => {
+                localePaths[`/locale/${key}`] = {
+                    page: '/locale',
+                    query: { id: key }
+                }
+            }
+        );
+
+    return {
+        ...localePaths,
+        '/': { page: '/' },
+        '/om': { page: '/about' },
+    }
+};
 
 const styleConfig = {
     cssModules: true,
@@ -17,7 +37,9 @@ const babelConf =  {webpack: config => {
     );
 
     return config;
-}}
+}};
+
+
 
 const { PHASE_PRODUCTION_SERVER } =
     process.env.NODE_ENV === 'development'
@@ -27,7 +49,7 @@ const { PHASE_PRODUCTION_SERVER } =
         : require('next-server/constants'); // Get values from `next-server` package when building on now v2
 
 module.exports = (phase, { defaultConfig }) => {
-    console.log('NODE_ENV', process.env.NODE_ENV)
+        console.log('NODE_ENV', process.env.NODE_ENV)
     console.log('NOW_REGION', process.env.NOW_REGION)
     console.log('phase', phase)
     if (phase === PHASE_PRODUCTION_SERVER) {
@@ -39,6 +61,7 @@ module.exports = (phase, { defaultConfig }) => {
     const withSass = require('@zeit/next-sass');
 
     return withSass({
+        exportPathMap,
         babelConf,
         ...styleConfig
     })

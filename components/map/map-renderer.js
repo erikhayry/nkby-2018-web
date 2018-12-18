@@ -63,12 +63,16 @@ const MapRenderer = (props) => {
         onZoomChanged,
         onDragEnd,
         zoom,
-        position
+        position,
+        isLoading
     } = props;
 
     return (
         <>
-            {false && showFindMeButton && <button onClick={props.setLocation} aria-label="Hitta min position på kartan">Hitta mig</button>}
+            {showFindMeButton && <button onClick={props.setLocation} className="map--find-me-btn" aria-label="Hitta min position på kartan">
+                <span className="visible-hidden">Hitta mig</span>
+            </button>}
+            {isLoading && <div className="map--loader">{isLoading}</div>}
             <GoogleMap
                 defaultZoom={zoom || 12}
                 defaultCenter={position || { lat: 63.5217687, lng: 22.5216011 }}
@@ -76,7 +80,7 @@ const MapRenderer = (props) => {
                 onZoomChanged={onZoomChanged}
                 onDragEnd={onDragEnd}
                 options={{
-                    fullscreenControl: true,
+                    fullscreenControl: false,
                     locationControl: true,
                     zoomControl: true,
                     streetViewControl: false,
@@ -92,7 +96,7 @@ const MapRenderer = (props) => {
                 {props.userPosition && <Marker
                     key={'user'}
                     position={props.userPosition}
-                    icon={renderIcon('/static/images/markers/white.png')}
+                    icon={renderIcon('/static/images/markers/user.png')}
                 />}
             </GoogleMap>
         </>

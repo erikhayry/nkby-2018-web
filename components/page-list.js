@@ -1,5 +1,5 @@
 import ReactGA from 'react-ga';
-import { sortPagesByTitle } from '../utils/locales';
+import { sortPagesByTitle } from '../utils/api';
 import Image from './image';
 
 const PageList = ({pages = []}) =>

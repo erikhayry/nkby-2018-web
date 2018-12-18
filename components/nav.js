@@ -10,6 +10,7 @@ const LINKS = [
     {
         href: '/about',
         copy: 'Om',
+        as: '/om',
         label: 'information om sidan'
     }
 ];
@@ -40,6 +41,7 @@ class Nav extends React.Component {
         const { showMenu } = this.state;
         const { pathname } = this.props;
 
+
         return (
             <div className={showMenu ? 'open' : ''}>
                 <div className="main-nav-btn" onClick={this.toggleMenu}>
@@ -48,13 +50,13 @@ class Nav extends React.Component {
                     <div className="main-nav-icon main-nav-icon--bottom"></div>
                 </div>
                 <nav className="main-nav">
-                    {LINKS.map(({href, label, copy}, i) => {
+                    {LINKS.map(({href, as, label, copy}, i) => {
                         if(pathname === href){
                             return <span key={i} className="main-nav--item is-active">{copy}</span>
                         }
 
                         return (
-                            <Link key={i} href={href}>
+                            <Link key={i} href={href} as={as}>
                                 <a aria-label={label} className="main-nav--item">{copy}</a>
                             </Link>
                         )

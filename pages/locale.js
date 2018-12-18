@@ -1,10 +1,11 @@
 import React from "react";
 import Link from 'next/link';
 import Head from 'next/head'
-import { getLocale, getLocalesNearby } from '../utils/locales'
+import { getLocale, getLocalesNearby } from '../utils/api'
 import { capitalize } from '../utils'
 import StaticMap from '../components/map/static-map';
 import PageList from '../components/page-list.js';
+import LocalesList from '../components/locales-list';
 import ErrorPage from 'next/error'
 import store from '../utils/store'
 
@@ -53,18 +54,7 @@ class Locale extends React.PureComponent {
                         <h1 className="locale--title">{locale.name}</h1>
                         <PageList pages={locale.pages} />
                         <h2 id="nearby-locales">Närliggande adresser</h2>
-                        <ol className="nearby-list locale--nearby-list">
-                            {localesNearby.map(({id, name, numberOfPages}, i) => {
-                                return (
-                                    <li key={i} className="nearby-list--item">
-                                        <Link prefetch href={`/locale?id=${id}&from=locale:${locale.id}`} >
-                                            <a className="nearby-list--link">{name} ({numberOfPages})</a>
-                                        </Link>
-                                    </li>
-                                )
-                            })}
-                        </ol>
-
+                        <LocalesList locales={localesNearby} withABCNav={false} className="locale--nearby-list" />
                         <Link href="/">
                             <a aria-label="tillbaka till kartan" className="back-btn">
                                 <span className="visible-hidden">Tillbaka</span>

@@ -20,7 +20,8 @@ class Map extends React.Component {
     state = {
         userPosition: undefined,
         zoom: undefined,
-        center: undefined
+        center: undefined,
+        isLoading: ''
     };
 
     onMapMounted(map){
@@ -58,6 +59,7 @@ class Map extends React.Component {
     }
 
     setLocation(){
+        this.setState({isLoading: 'Söker din plats'});
         ReactGA.event({
             category: 'user',
             action: 'find me'
@@ -67,13 +69,14 @@ class Map extends React.Component {
                 this.ref.panTo({lat: position.coords.latitude, lng: position.coords.longitude})
             }
             this.setState({
-                userPosition: {lat: position.coords.latitude, lng: position.coords.longitude}
+                userPosition: {lat: position.coords.latitude, lng: position.coords.longitude},
+                isLoading: ''
             })
         });
     }
 
     render(){
-        const {userPosition, activeMarker} = this.state;
+        const {userPosition, activeMarker, isLoading} = this.state;
         const {
             locales,
             currentLocale,
@@ -96,6 +99,7 @@ class Map extends React.Component {
                     visitedLocales={visitedLocales}
                     activeMarker={activeMarker}
                     currentLocale={currentLocale}
+                    isLoading={isLoading}
                     handleMarkerEvent={this.handleMarkerEvent}
                     setLocation={this.setLocation}
                     setActiveMarker={this.setActiveMarker}

@@ -3,6 +3,7 @@ const { send } = require('micro')
 const { router, get } = require('microrouter')
 const cors = require('micro-cors')()
 const locales = require('./locales.json');
+const statistics = require('./statistics.json');
 
 // Convert Degress to Radians
 function Deg2Rad(deg) {
@@ -73,6 +74,9 @@ module.exports = router(
     })),
     cors(get('/api/locales', async (req, res) => {
         send(res, 200, getLocales())
+    })),
+    cors(get('/api/statistics', async (req, res) => {
+        send(res, 200, statistics)
     })),
     cors(get(new UrlPattern('/api/locales-nearby/:id'), async ({ params, query }, res) => {
         const { id } = params;

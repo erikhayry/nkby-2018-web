@@ -11,6 +11,8 @@ $z-main-nav-btn: 2;
 $z-back-btn: 2;
 $z-back-to-top-btn: 2;
 $z-splash: 3;
+$z-map-btn: 1;
+$z-map-loader: 2;
 
 
 *{
@@ -22,6 +24,8 @@ html, body {
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 300;
   background-color: $color-secondary;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 ul, ol{

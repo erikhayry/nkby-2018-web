@@ -10,7 +10,7 @@ function getVisible({position}){
 }
 
 function getSrc(position, localesNearby, width, height, zoom){
-    let markers = position ? `&markers=icon:https://www.dropbox.com/s/ajc92ltaq1rzprf/marker.png?dl=1|${position.lat},${position.lng}` : '';
+    let markers = position ? `&markers=icon:https://nkby.now.sh/static/images/markers/marker.png?dl=1|${position.lat},${position.lng}` : '';
     //markers = localesNearby.map(getLaballedMarker).join('') + markers;
     //const visible = localesNearby.map(getVisible).join('|');
 
@@ -53,7 +53,7 @@ function getStyle(mapClassName, defaultWidth, widths){
 export default (props) => {
     const {currentLocale = {}, localesNearby = [], widths = [], height = 200, zoom = '', mapClassName = '', style = {}} = props;
     const { position } = currentLocale;
-    const defaultWidth = widths[0]
+    const defaultWidth = widths[0];
 
     return (
         <>
