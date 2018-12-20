@@ -10,9 +10,10 @@ $transition: all $transition-speed ease; //Transitions
 $z-main-nav-btn: 2;
 $z-back-btn: 2;
 $z-back-to-top-btn: 2;
-$z-splash: 3;
 $z-map-btn: 1;
 $z-map-loader: 2;
+$z-splash: 3;
+$z-ie-info: 4;
 
 
 *{
@@ -126,4 +127,14 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
   overflow: auto;
   position: absolute;
   width: auto;
+}
+
+.ie-info{
+  position: fixed;
+  width: 100%;
+  padding: 10px;
+  background-color: #e66f6f;
+  color: #fff;
+  text-align: center;
+  z-index: $z-ie-info;
 }

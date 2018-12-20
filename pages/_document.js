@@ -2,6 +2,13 @@ import Document, { Head, NextScript, Main } from 'next/document';
 
 export default class MyDocument extends Document {
     render() {
+        var ieMessage = `<!--[if IE]>
+                  <div className="ie-info">
+                       För tillfället stöds inte din webbläsare (Internet Explorer). <br/>
+                       Välj en annan webbläsare eller stäng av javascript för att sidan skall fungera.
+                   </div>
+                <![endif]-->`;
+
         return (
             <html lang="se">
             <Head>
@@ -23,8 +30,9 @@ export default class MyDocument extends Document {
                 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
             </Head>
             <body>
-            <Main />
-            <NextScript />
+                <div dangerouslySetInnerHTML= {{__html: ieMessage}} />
+                <Main />
+                <NextScript />
             </body>
             </html>
         );
