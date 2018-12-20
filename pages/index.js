@@ -48,7 +48,7 @@ class App extends React.PureComponent {
                         />
                     </div>
                     <div className="index--content">
-                        <LocalesList locales={locales} withABCNav={true}  />
+                        <LocalesList locales={locales} withNav={true}  />
                     </div>
                 </div>
             </>

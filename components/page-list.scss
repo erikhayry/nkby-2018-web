@@ -1,0 +1,21 @@
+.page-list{
+  padding: 1rem;
+}
+
+.page-list--item{
+  background-color: rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.page-list--item-image{
+  display: block;
+  margin: 0 auto;
+}
+
+.page-list--item-description{
+  background-color: $color-primary;
+  color: $color-secondary;
+  padding: 0.75rem;
+  display: block;
+}

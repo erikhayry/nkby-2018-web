@@ -3,6 +3,7 @@ import ReactGA from 'react-ga';
 import * as Sentry from '@sentry/browser';
 import Nav from './nav';
 import Splash from './splash';
+import BackToTopBtn from './back-to-top-btn';
 import '../styles/global.scss'
 
 export const appWithInitialization = App => {
@@ -14,7 +15,6 @@ export const appWithInitialization = App => {
             };
 
             this.onLoadingEnd = this.onLoadingEnd.bind(this)
-
         }
 
         static async getInitialProps(appContext) {
@@ -58,9 +58,7 @@ export const appWithInitialization = App => {
                     <a href="#main" className="visible-hidden">{skipToContentCopy || 'Gå direkt till innehåll'}</a>
                     <Nav pathname={pathname} ></Nav>
                     <App {...this.props} isLoading={!showContent} role="main" id="top"/>
-                    <a href="#top" className='back-to-top-btn'>
-                        <span className="visible-hidden">Tillbaka till toppen</span>
-                    </a>
+                    <BackToTopBtn />
                     <footer className="footer">
                         <div className="footer-inner">
                             Skapad i Stockholm av <a href="https://www.ellenportin.com/" target="_blank" className="footer-inner--name">Ellen Portin</a> och <a href="https://github.com/erikportin" target="_blank" className="footer-inner--name">Erik Portin</a> hösten och vintern 2018

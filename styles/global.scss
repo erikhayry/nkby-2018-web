@@ -2,8 +2,11 @@
   @import "./normalizer.scss";
   @import "./base.scss";
   @import "./landmarks.scss";
-  @import "./map.scss";
-  @import "./pages.scss";
+  @import "../pages/pages";
   @import "../components/splash";
-  @import "./trash.scss";
+  @import "../components/back-to-top-btn";
+  @import "../components/nav";
+  @import "../components/locales-list";
+  @import "../components/page-list";
+  @import "../components/map/map";
 }

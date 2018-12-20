@@ -1,0 +1,54 @@
+/*
+  locales-nav
+ */
+
+.locales-list-nav{
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+}
+
+.locales-list-nav--item{
+  display: inline-block;
+  text-align: center;
+}
+
+.locales-list-nav--link{
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 0.5rem;
+  transition: $transition;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+
+  &:hover{
+    background-color: rgba(0,0,0,0.5);
+  }
+
+}
+
+.locales-list--item-heading{
+  padding: 0 1rem;
+  text-transform: uppercase;
+  text-align: left;
+  margin: 1rem 0;
+}
+.locales-list--link{
+  transition: $transition;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  display: block;
+  &:hover{
+    padding-left: 1.25rem;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  &:active{
+    background-color: $color-primary;
+    color: $color-secondary;
+  }
+}

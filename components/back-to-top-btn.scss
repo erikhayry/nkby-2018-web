@@ -1,0 +1,15 @@
+.back-to-top-btn{
+  @extend .fixed-btn;
+  opacity: 0;
+  z-index: $z-back-to-top-btn;
+  right: 1rem;
+  background-image: url(/static/up.png);
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: $transition;
+
+  &.is-visible{
+    opacity: 1;
+  }
+}

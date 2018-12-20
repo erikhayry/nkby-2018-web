@@ -92,8 +92,7 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
 }
 
 
-.back-btn,
-.back-to-top-btn{
+.fixed-btn{
   @extend .btn-round;
   position: fixed;
   bottom: 0.75rem;
@@ -102,6 +101,7 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
 }
 
 .back-btn {
+  @extend .fixed-btn;
   z-index: $z-back-btn;
   left: 1rem;
   background-image: url(/static/back.png);
@@ -109,12 +109,21 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
   background-repeat: no-repeat;
   background-position: center center;
 }
-.back-to-top-btn{
-  z-index: $z-back-to-top-btn;
-  right: 1rem;
-  background-image: url(/static/up.png);
-  background-size: 32px 32px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: $transition;
+
+
+.visible-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.visible-hidden:focus {
+  clip: auto;
+  height: auto;
+  overflow: auto;
+  position: absolute;
+  width: auto;
 }
