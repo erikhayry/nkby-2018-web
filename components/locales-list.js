@@ -6,7 +6,7 @@ function setHref(id){
         href: `/locale?id=${id}`
     };
 
-    ret.as = `/locale/${encodeURI(id)}`;
+    //ret.as = `/locale/${id}`;
 
     return ret;
 }

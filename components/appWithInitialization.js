@@ -30,10 +30,10 @@ export const appWithInitialization = App => {
 
         componentDidMount(){
             document.documentElement.className = "js";
-            const isDev = process.env.NODE_ENV === 'development';
+            const isDev = process.env.NODE_ENV !== 'production';
             if (!isDev) {
                 ReactGA.initialize('UA-129661075-1', {
-                    debug: true,
+                    debug: false,
                     titleCase: false
                 });
                 Sentry.init({
@@ -49,7 +49,7 @@ export const appWithInitialization = App => {
         }
 
         render() {
-            const {router: {pathname}, pageProps: {skipToContentCopy}} = this.props;
+            const {router: {pathname}, pageProps: {skipToContentCopy} = {}} = this.props;
             const showContent = true;
 
             return (
@@ -63,7 +63,7 @@ export const appWithInitialization = App => {
                     </a>
                     <footer className="footer">
                         <div className="footer-inner">
-                            Skapad i Stockholm av <a href="" className="footer-inner--name">Ellen Portin</a> och <a href="" className="footer-inner--name">Erik Portin</a> hösten och vintern 2018
+                            Skapad i Stockholm av <a href="https://www.ellenportin.com/" target="_blank" className="footer-inner--name">Ellen Portin</a> och <a href="https://github.com/erikportin" target="_blank" className="footer-inner--name">Erik Portin</a> hösten och vintern 2018
                         </div>
                     </footer>
                 </>

@@ -19,5 +19,5 @@
     { "src": "/api/locales-nearby/(.*)", "dest": "/api/index.js" }
 
   ],
-  "alias": ["nkby.now.sh"]
+  "alias": "nkby.now.sh"
 }

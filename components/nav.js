@@ -10,7 +10,6 @@ const LINKS = [
     {
         href: '/about',
         copy: 'Om',
-        as: '/om',
         label: 'information om sidan'
     }
 ];
@@ -50,7 +49,7 @@ class Nav extends React.Component {
                     <div className="main-nav-icon main-nav-icon--bottom"></div>
                 </div>
                 <nav className="main-nav">
-                    {LINKS.map(({href, as, label, copy}, i) => {
+                    {LINKS.map(({href, as = '', label, copy}, i) => {
                         if(pathname === href){
                             return <span key={i} className="main-nav--item is-active">{copy}</span>
                         }

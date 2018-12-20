@@ -14,7 +14,7 @@ export function searchToObject() {
     return result;
 }
 
-export function capitalize(string) {
+export function capitalize(string = '') {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
