@@ -48,7 +48,9 @@ class App extends React.PureComponent {
                         />
                     </div>
                     <div className="index--content">
-                        <LocalesList locales={locales} withNav={true}  />
+                        <div className="index--content-inner">
+                            <LocalesList locales={locales} withNav={true}  />
+                        </div>
                     </div>
                 </div>
             </>

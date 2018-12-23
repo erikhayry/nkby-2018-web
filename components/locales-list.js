@@ -25,28 +25,30 @@ const LocalesList = ({locales = [], withNav = false, className}) => {
                 </ul>
             }
 
-            {sortedLocales.map(({id, name, numberOfPages, position}) => {
-                if(position){
-                    const firstLetter = name[0];
-                    const firstOnLetterLocale = sortedLocales.find(({name}) => firstLetter === name[0]);
-                    const heading = firstOnLetterLocale.id === id ? <h2 id={firstLetter} className="locales-list--item-heading">{firstLetter}</h2> : null;
+            <ul>
+                {sortedLocales.map(({id, name, numberOfPages, position}) => {
+                    if(position){
+                        const firstLetter = name[0];
+                        const firstOnLetterLocale = sortedLocales.find(({name}) => firstLetter === name[0]);
+                        const heading = firstOnLetterLocale.id === id ? <h2 id={firstLetter} className="locales-list--item-heading">{firstLetter}</h2> : null;
 
-                    return (
-                        <div key={id} className={className}>
-                            {withNav && <>
-                                {heading}
-                            </>}
-                            <div className="locales-list--item">
-                                <Link {...setHref(id)}>
-                                    <a className="locales-list--link">{name} ({numberOfPages})</a>
-                                </Link>
-                            </div>
-                        </div>
-                    )
-                }
+                        return (
+                            <li key={id} className={className}>
+                                {withNav && <>
+                                    {heading}
+                                </>}
+                                <div className="locales-list--item">
+                                    <Link {...setHref(id)}>
+                                        <a className="locales-list--link">{name} ({numberOfPages})</a>
+                                    </Link>
+                                </div>
+                            </li>
+                        )
+                    }
 
-                return null;
-            })}
+                    return null;
+                })}
+            </ul>
         </>
     )
 };

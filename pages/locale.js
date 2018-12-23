@@ -52,7 +52,7 @@ class Locale extends React.PureComponent {
                     </div>
                     <div className="locale--content">
                         <h1 className="locale--title">{locale.name}</h1>
-                        <PageList pages={locale.pages} />
+                        <PageList pages={locale.pages} className="locale--page-list" />
                         <h2 id="nearby-locales">Närliggande adresser</h2>
                         <LocalesList locales={localesNearby} withABCNav={false} className="locale--nearby-list" />
                         <Link href="/">

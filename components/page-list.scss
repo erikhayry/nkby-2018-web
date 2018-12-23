@@ -1,11 +1,32 @@
 .page-list{
   padding: 1rem;
+  overflow: hidden;
+  column-gap: 2rem;
+
+  &.with-columns{
+    @media only screen and (min-width: 500px) {
+      column-count: 2;
+    }
+    @media only screen and (min-width: 800px) {
+      column-count: 3;
+    }
+    @media only screen and (min-width: 1200px) {
+      column-count: 4;
+    }
+  }
+
 }
 
 .page-list--item{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-list--item-inner{
   background-color: rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  margin: 0 auto 2rem;
+  //max-width: 700px;
+  border: 0.5rem solid #fff;
+  display: inline-block;
 }
 
 .page-list--item-image{
