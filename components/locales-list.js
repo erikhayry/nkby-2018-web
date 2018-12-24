@@ -1,16 +1,6 @@
 import { sortLocalesByName } from '../utils/api'
 import Link from 'next/link'
 
-function setHref(id){
-    let ret = {
-        href: `/locale?id=${id}`
-    };
-
-    //ret.as = `/locale/${id}`;
-
-    return ret;
-}
-
 const LocalesList = ({locales = [], withNav = false, className}) => {
     const sortedLocales = withNav ? sortLocalesByName(locales).filter(({position}) => position) : locales;
     const letterList = sortedLocales.map(({name}) => name[0]).filter((value, index, self) => self.indexOf(value) === index);
@@ -38,7 +28,7 @@ const LocalesList = ({locales = [], withNav = false, className}) => {
                                     {heading}
                                 </>}
                                 <div className="locales-list--item">
-                                    <Link {...setHref(id)}>
+                                    <Link href={`/locale?id=${id}`}>
                                         <a className="locales-list--link">{name} ({numberOfPages})</a>
                                     </Link>
                                 </div>

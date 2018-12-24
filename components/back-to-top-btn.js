@@ -17,7 +17,6 @@ class BackToTopBtn extends React.Component {
 
     componentDidMount(){
         window.addEventListener('scroll', this.handleScroll);
-
     }
 
     componentWillUnmount(){

@@ -78,14 +78,3 @@ export function sortPagesByTitle(pages){
             return sortByName(title1, title2)
         })
 }
-
-export function getMinMax(type) {
-    const filteredLocales = getLocales()
-        .filter(locale => locale.position);
-
-    const max = Math.max(...filteredLocales.map(({position}) => position[type]));
-
-    const min = Math.min(...filteredLocales.map(({position}) => position[type]))
-
-    return {max, min}
-}

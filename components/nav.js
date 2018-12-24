@@ -40,7 +40,6 @@ class Nav extends React.Component {
         const { showMenu } = this.state;
         const { pathname } = this.props;
 
-
         return (
             <div className={showMenu ? 'open' : ''}>
                 <div className="main-nav-btn" onClick={this.toggleMenu}>

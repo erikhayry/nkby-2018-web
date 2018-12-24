@@ -28,11 +28,12 @@ class About extends React.PureComponent {
                     <title>Om | NKBY</title>
                 </Head>
                 <div className="about">
-                    <h1>Om nkby</h1>
+                    <h1>Om</h1>
+                    <p>Nnkby är ett sökverktyg för <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a>. Hitta och läs om historiska platser och personer i Nykarleby</p>
                     <p>All data här hämtad från <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> och sidan skulle inte vara möjlig utan Fredrik Liljeströms fantastiska jobb</p>
                     <p>Den är kodad av Erik Portin och designad av <a href="https://www.ellenportin.com/" target="_blank">Ellen Portin</a></p>
 
-                    <h2>Statistik</h2>
+                    <h2>Nkby i siffror</h2>
 
                     <div className="about--numbers">
                         <div className="about--large-primary">{numberOfPages}</div>
