@@ -1,6 +1,6 @@
 import App, { Container } from 'next/app';
 import { appWithInitialization } from '../components/appWithInitialization';
-import { PageTransition } from 'next-page-transitions'
+import { PageTransition } from 'next-page-transitions';
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {

@@ -4,10 +4,28 @@ import LocalesList from '../components/locales-list';
 import { getLocales } from '../utils/api'
 import store from '../utils/store'
 import Head from 'next/head'
+import Router from 'next/router'
 
 const MAP_HEIGHT = 500;
 
 class App extends React.PureComponent {
+    componentDidMount(){
+        const isInStandaloneMode = (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
+
+        if (isInStandaloneMode) {
+            const currentPage = store.get('current-page');
+            if(currentPage && currentPage !== Router.asPath){
+                store.set('current-page',  Router.asPath);
+                Router.replace(currentPage)
+            } else if(Router.asPath){
+                store.set('current-page',  Router.asPath);
+            }
+        }
+    }
+
+    componentWillUnmount(){
+        store.set('current-page');
+    }
 
     onZoomChanged(zoom){
         store.set('zoom', zoom)

@@ -1,9 +1,21 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import Router from 'next/router'
+import store from '../utils/store'
 import { getStatistics, getLocales } from '../utils/api'
 import LocalesList from '../components/locales-list';
 
 class About extends React.PureComponent {
+    componentDidMount(){
+        if(Router.asPath){
+            store.set('current-page',  Router.asPath);
+        }
+    }
+
+    componentWillUnmount(){
+        store.set('current-page');
+    }
+
     render() {
         const {statistics: {numberOfPages, totalNumberOfPages, numberOfImages, totalNumberOfImages, numberOfLocales} = {}, locales = []} = this.props;
         const topLocales = locales

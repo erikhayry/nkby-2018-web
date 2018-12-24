@@ -3,10 +3,10 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel"
 import theme from '../../data/themes/light.json';
 
-function renderIcon(url){
+function renderIcon(url, size = [22, 44]){
     return {
         url,
-        scaledSize: new google.maps.Size(22, 40),
+        scaledSize: new google.maps.Size(size[0], size[1]),
         labelOrigin: new google.maps.Point(11, 12),
         anchor: new google.maps.Point(11, 40),
     }
@@ -96,7 +96,7 @@ const MapRenderer = (props) => {
                 {props.userPosition && <Marker
                     key={'user'}
                     position={props.userPosition}
-                    icon={renderIcon('/static/images/markers/user.png')}
+                    icon={renderIcon('/static/images/markers/user.png', [12, 30])}
                 />}
             </GoogleMap>
         </>

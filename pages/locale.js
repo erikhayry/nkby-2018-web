@@ -1,6 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 import Head from 'next/head'
+import Router from 'next/router'
 import { getLocale, getLocalesNearby } from '../utils/api'
 import { capitalize } from '../utils'
 import StaticMap from '../components/map/static-map';
@@ -19,6 +20,14 @@ class Locale extends React.PureComponent {
         if(!visitedLocales.includes(id)){
             store.set('visited-locales', [...visitedLocales, id]);
         }
+
+        if(Router.asPath){
+            store.set('current-page',  Router.asPath);
+        }
+    }
+
+    componentWillUnmount(){
+        store.set('current-page');
     }
 
     render() {
