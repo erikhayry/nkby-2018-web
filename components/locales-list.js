@@ -29,7 +29,10 @@ const LocalesList = ({locales = [], withNav = false, className}) => {
                                 </>}
                                 <div className="locales-list--item">
                                     <Link href={`/locale?id=${id}`}>
-                                        <a className="locales-list--link">{name} ({numberOfPages})</a>
+                                        <a className="locales-list--link">
+                                            {name}
+                                            {numberOfPages > 1 && <span className="locales-list--number-of-pages">{numberOfPages}</span>}
+                                        </a>
                                     </Link>
                                 </div>
                             </li>
