@@ -1,0 +1,25 @@
+{
+  "short_name": "NKBY",
+  "name": "NKBY",
+  "icons": [
+    {
+      "src": "/static/icons/Icon-40x40@2x.png",
+      "type": "image/png",
+      "sizes": "80x80"
+    },
+    {
+      "src": "/static/icons/Icon-83.5@2x.png",
+      "type": "image/png",
+      "sizes": "167x167"
+    },
+    {
+      "src": "/static/icons/Icon-marketing-1024x1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#092B43",
+  "display": "standalone",
+  "theme_color": "#F8C6C4"
+}

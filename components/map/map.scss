@@ -4,10 +4,22 @@
 }
 
 .map--marker-label{
+  position: relative;
+}
+
+.map--marker-label-name{
   background-color: $color-primary;
   color: $color-secondary;
   padding: 0.75rem;
   text-transform: capitalize;
+  float: left;
+}
+
+.map--marker-label-count{
+  color: $color-primary;
+  background-color: $color-secondary;
+  padding: 0.75rem;
+  float: left;
 }
 
 .map--find-me-btn{
@@ -28,11 +40,28 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: $color-secondary;
   font-size: 2rem;
   font-family: 'Playfair Display', serif;
   z-index: $z-map-loader;
   text-align: center;
   padding: 3rem;
-  color: $color-secondary;
+  color: $color-primary;
+
+  &:after{
+    display: none;
+    content: '';
+    position: absolute;
+    background-image: url(/static/images/loader.png);
+    background-size: 700px auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 700px;
+    height: 685px;
+    top: 100%;
+    left: 100%;
+    margin-top: -190px;
+    margin-left: -560px;
+  }
+
 }

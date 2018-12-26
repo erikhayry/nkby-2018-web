@@ -1,1 +1,3 @@
-export default {}
+export const KEYS = {
+    ENTER: 13
+};

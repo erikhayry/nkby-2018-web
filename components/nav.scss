@@ -93,11 +93,16 @@ $burger-pad-top: ($burger-height / 2 - $burger-bun-width-half - 2); //Vertically
   opacity: 0;
   @extend .btn-round;
   padding-left: $burger-pad-left;
-  padding-top: $burger-pad-top;
+  padding-top: 0;
   position: absolute;
   z-index: $z-main-nav-btn;
   left: 1rem;
   top: 1rem;
+}
+
+.main-nav-btn--inner{
+  position: absolute;
+  top: $burger-pad-top;
 }
 
 .main-nav-icon {

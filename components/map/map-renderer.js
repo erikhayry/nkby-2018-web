@@ -22,13 +22,13 @@ function getIcon(id, visitedLocales = []){
 
 function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMarker, handleMarkerEvent, enableUserInteractions = true){
     return locales.map(({id, ...locale}) => {
-        const { name, position } = locale;
+        const { name, position, numberOfPages} = locale;
 
         return position ? <MarkerWithLabel
             labelClass="map--marker-label"
             key={id}
             position={position}
-            labelAnchor={{x: 0, y: 0}}
+            labelAnchor={{x: 0, y: -5}}
             labelStyle={{
                 visibility: id === activeMarker ? 'visible' : 'hidden'
             }}
@@ -45,7 +45,10 @@ function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMark
             }}
             icon={getIcon(id, visitedLocales)}
         >
-            <div>{name}</div>
+            <div>
+                <div className="map--marker-label-name">{name}</div>
+                <div className="map--marker-label-count">{numberOfPages}</div>
+            </div>
         </MarkerWithLabel> : null
     });
 }

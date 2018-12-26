@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-
+import { KEYS } from './constants'
 const LINKS = [
     {
         href: '/',
@@ -42,11 +42,17 @@ class Nav extends React.Component {
 
         return (
             <div className={showMenu ? 'open' : ''}>
-                <div className="main-nav-btn" onClick={this.toggleMenu}>
-                    <div className="main-nav-icon main-nav-icon--top"></div>
-                    <div className="main-nav-icon main-nav-icon--mid"></div>
-                    <div className="main-nav-icon main-nav-icon--bottom"></div>
-                </div>
+                <button
+                    className="main-nav-btn"
+                    onClick={this.toggleMenu}
+                    tabIndex="2"
+                >
+                    <div className="main-nav-btn--inner">
+                        <div className="main-nav-icon main-nav-icon--top"></div>
+                        <div className="main-nav-icon main-nav-icon--mid"></div>
+                        <div className="main-nav-icon main-nav-icon--bottom"></div>
+                    </div>
+                </button>
                 <nav className="main-nav">
                     {LINKS.map(({href, as = '', label, copy}, i) => {
                         if(pathname === href){

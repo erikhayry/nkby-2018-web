@@ -72,7 +72,7 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
 
 .btn-round{
   background: #fff;
-  border: #fff solid $btn-round-border;
+  border: $color-primary solid $btn-round-border;
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;
@@ -89,7 +89,7 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
     color: $color-secondary;
   }
   &:hover{
-    border-color: $color-primary;
+    border-color: #fff;
   }
 }
 
@@ -100,16 +100,27 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
   bottom: 0.75rem;
   font-size: 0.75rem;
   padding: 1.25rem 0;
+  background-color: $color-primary;
+
+  &:after{
+    content: '';
+    display: block;
+    border: 10px solid transparent;
+    position: absolute;
+  }
 }
 
 .back-btn {
   @extend .fixed-btn;
   z-index: $z-back-btn;
   left: 1rem;
-  background-image: url(/static/back.png);
-  background-size: 32px 32px;
-  background-repeat: no-repeat;
-  background-position: center center;
+
+  &:after{
+    border-right-color: $color-secondary;
+    border-right-width: 20px;
+    left: -3px;
+    top: 9px;
+  }
 }
 
 

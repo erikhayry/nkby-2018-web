@@ -42,7 +42,7 @@ export const appWithInitialization = App => {
 
             return (
                 <>
-                    <a href="#main" className="visible-hidden">{skipToContentCopy || 'Gå direkt till innehåll'}</a>
+                    <a href="#main" className="visible-hidden" tabIndex="1">{skipToContentCopy || 'Gå direkt till innehåll'}</a>
                     <Nav pathname={pathname} ></Nav>
                     <App {...this.props} role="main" id="top"/>
                     <BackToTopBtn />
