@@ -2,7 +2,7 @@
   @extend .fixed-btn;
   opacity: 0;
   z-index: $z-back-to-top-btn;
-  right: 1rem;
+  right: 0.5rem;
   transition: $transition;
 
   &:after{

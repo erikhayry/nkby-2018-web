@@ -5,7 +5,7 @@ class BackToTopBtn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showBackToTop: typeof window !== 'undefined' && window.scrollY > 500 ? true : false
+            showBackToTop: true
         };
 
         this.handleScroll = this.handleScroll.bind(this)
@@ -17,6 +17,8 @@ class BackToTopBtn extends React.Component {
 
     componentDidMount(){
         window.addEventListener('scroll', this.handleScroll);
+        this.setState({showBackToTop: typeof window !== 'undefined' && window.scrollY > 500 ? true : false});
+
     }
 
     componentWillUnmount(){
