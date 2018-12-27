@@ -8,7 +8,7 @@ import * as Sentry from '@sentry/browser';
 const isDev = process.env.NODE_ENV !== 'production';
 if(!isDev){
     Sentry.init({
-        debug: true,
+        debug: false,
         dsn: 'https://89980de6a8aa466695ae8186dba70f9b@sentry.io/1305873'
     });
 }
