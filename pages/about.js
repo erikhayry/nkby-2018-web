@@ -42,7 +42,7 @@ class About extends React.PureComponent {
                         <div className="about--large-primary">{numberOfPages}</div>
                         <div className="about--large-primary-copy">Antal sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> som kan hittas här</div>
                         <div className="about--large-secondary">{totalNumberOfPages}</div>
-                        <div className="about--large-secondary-copy">Toala antalet sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a></div>
+                        <div className="about--large-secondary-copy">Totala antalet sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a></div>
                     </div>
 
                     <div className="about--numbers">
