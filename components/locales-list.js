@@ -3,7 +3,9 @@ import Link from 'next/link'
 
 const LocalesList = ({locales = [], withNav = false, className}) => {
     const sortedLocales = withNav ? sortLocalesByName(locales).filter(({position}) => position) : locales;
-    const letterList = sortedLocales.map(({name}) => name[0]).filter((value, index, self) => self.indexOf(value) === index);
+    const letterList = sortedLocales
+        .map(({name}) => name[0])
+        .filter((value, index, self) => self.indexOf(value) === index);
 
     return (
         <>

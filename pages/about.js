@@ -31,7 +31,7 @@ class About extends React.PureComponent {
                     <h1>Om</h1>
                     <p>Nkby är ett sökverktyg för <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a>. Hitta och läs om historiska platser och personer i Nykarleby</p>
                     <p>All data här hämtad från <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> och sidan skulle inte vara möjlig utan Fredrik Liljeströms fantastiska jobb</p>
-                    <p>Den är kodad av Erik Portin och designad av <a href="https://www.ellenportin.com/" target="_blank">Ellen Portin</a></p>
+                    <p>Den är kodad av Erik Portin och designad av <a href="https://ellenportin.myportfolio.com/" target="_blank">Ellen Portin</a></p>
 
                     <h2>Nkby i siffror</h2>
 

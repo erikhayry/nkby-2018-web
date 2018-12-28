@@ -48,7 +48,7 @@ export const appWithInitialization = App => {
                     <BackToTopBtn />
                     <footer className="footer">
                         <div className="footer-inner">
-                            Skapad i Stockholm av <a href="https://www.ellenportin.com/" target="_blank" className="footer-inner--name">Ellen Portin</a> och <a href="https://github.com/erikportin" target="_blank" className="footer-inner--name">Erik Portin</a> hösten och vintern 2018
+                            Skapad i Stockholm av <a href="https://ellenportin.myportfolio.com/" target="_blank" className="footer-inner--name">Ellen Portin</a> och <a href="https://github.com/erikportin" target="_blank" className="footer-inner--name">Erik Portin</a> hösten och vintern 2018
                         </div>
                     </footer>
                 </>

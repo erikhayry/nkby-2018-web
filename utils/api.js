@@ -18,6 +18,14 @@ function getOrigin(host) {
 }
 
 function sortByName(a, b){
+    const specials = ['å', 'ä'];
+    const index_a = specials.indexOf(a[0]);
+    const index_b = specials.indexOf(b[0]);
+
+    if(index_a > -1 && index_b > -1){
+        return index_a - index_b;
+    }
+
     if(a < b){
         return -1
     }
