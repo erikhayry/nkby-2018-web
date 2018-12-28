@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import ReactGA from 'react-ga';
 import Router from 'next/router'
 import store from '../utils/store'
 import { getStatistics, getLocales } from '../utils/api'
@@ -9,7 +10,9 @@ class About extends React.PureComponent {
     componentDidMount(){
         if(Router.asPath){
             store.set('current-page',  Router.asPath);
+            ReactGA.pageview(Router.asPath);
         }
+
     }
 
     componentWillUnmount(){
