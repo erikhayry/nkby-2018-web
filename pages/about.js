@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import ReactGA from 'react-ga';
 import Router from 'next/router'
 import store from '../utils/store'
 import { getStatistics, getLocales } from '../utils/api'
@@ -9,7 +10,9 @@ class About extends React.PureComponent {
     componentDidMount(){
         if(Router.asPath){
             store.set('current-page',  Router.asPath);
+            ReactGA.pageview(Router.asPath);
         }
+
     }
 
     componentWillUnmount(){
@@ -39,7 +42,7 @@ class About extends React.PureComponent {
                         <div className="about--large-primary">{numberOfPages}</div>
                         <div className="about--large-primary-copy">Antal sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> som kan hittas här</div>
                         <div className="about--large-secondary">{totalNumberOfPages}</div>
-                        <div className="about--large-secondary-copy">Toala antalet sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a></div>
+                        <div className="about--large-secondary-copy">Totala antalet sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a></div>
                     </div>
 
                     <div className="about--numbers">

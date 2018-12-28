@@ -7,6 +7,11 @@ import * as Sentry from '@sentry/browser';
 
 const isDev = process.env.NODE_ENV !== 'production';
 if(!isDev){
+    ReactGA.initialize('UA-129661075-1', {
+        debug: false,
+        titleCase: false
+    });
+    
     Sentry.init({
         debug: false,
         dsn: 'https://89980de6a8aa466695ae8186dba70f9b@sentry.io/1305873'
@@ -14,7 +19,7 @@ if(!isDev){
 }
 
 export const appWithInitialization = App => {
-    return class AppWithUser extends React.Component {
+    return class AppWithInitialization extends React.Component {
         static async getInitialProps(appContext) {
             let appProps = {};
             if (typeof App.getInitialProps === 'function') {
@@ -28,13 +33,6 @@ export const appWithInitialization = App => {
 
         componentDidMount(){
             document.documentElement.className = "js";
-            const isDev = process.env.NODE_ENV !== 'production';
-            if (!isDev) {
-                ReactGA.initialize('UA-129661075-1', {
-                    debug: false,
-                    titleCase: false
-                });
-            }
         }
 
         render() {

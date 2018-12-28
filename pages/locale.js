@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from 'react-ga';
 import Link from 'next/link';
 import Head from 'next/head'
 import Router from 'next/router'
@@ -23,6 +24,7 @@ class Locale extends React.PureComponent {
 
         if(Router.asPath){
             store.set('current-page',  Router.asPath);
+            ReactGA.pageview(Router.asPath);
         }
     }
 

@@ -1,4 +1,5 @@
 import React from "react"
+import ReactGA from 'react-ga';
 import Map from '../components/map';
 import LocalesList from '../components/locales-list';
 import { getLocales } from '../utils/api'
@@ -21,6 +22,11 @@ class App extends React.PureComponent {
                 store.set('current-page',  Router.asPath);
             }
         }
+
+        if(Router.asPath){
+            ReactGA.pageview(Router.asPath);
+        }
+
     }
 
     componentWillUnmount(){
