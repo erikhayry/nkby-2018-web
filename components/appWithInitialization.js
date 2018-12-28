@@ -12,7 +12,7 @@ if(!isDev){
         titleCase: false
     });
     Sentry.init({
-        debug: true,
+        debug: false,
         dsn: 'https://89980de6a8aa466695ae8186dba70f9b@sentry.io/1305873'
     });
 }

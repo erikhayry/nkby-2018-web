@@ -32,7 +32,7 @@ class About extends React.PureComponent {
                 </Head>
                 <div className="about">
                     <h1>Om</h1>
-                    <p>Nnkby är ett sökverktyg för <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a>. Hitta och läs om historiska platser och personer i Nykarleby</p>
+                    <p>Nkby är ett sökverktyg för <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a>. Hitta och läs om historiska platser och personer i Nykarleby</p>
                     <p>All data här hämtad från <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> och sidan skulle inte vara möjlig utan Fredrik Liljeströms fantastiska jobb</p>
                     <p>Den är kodad av Erik Portin och designad av <a href="https://www.ellenportin.com/" target="_blank">Ellen Portin</a></p>
 
@@ -40,14 +40,14 @@ class About extends React.PureComponent {
 
                     <div className="about--numbers">
                         <div className="about--large-primary">{numberOfPages}</div>
-                        <div className="about--large-primary-copy">Antal sidor</div>
+                        <div className="about--large-primary-copy">Antal sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> som kan hittas här</div>
                         <div className="about--large-secondary">{totalNumberOfPages}</div>
                         <div className="about--large-secondary-copy">Toala antalet sidor på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a></div>
                     </div>
 
                     <div className="about--numbers">
                         <div className="about--large-primary">{numberOfImages}</div>
-                        <div className="about--large-primary-copy">Antal bilder</div>
+                        <div className="about--large-primary-copy">Antal bilder från <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a> som kan ses här</div>
                         <div className="about--large-secondary">{totalNumberOfImages}</div>
                         <div className="about--large-secondary-copy">Totala antalet bilder på <a href="http://nykarlebyvyer.nu/" target="_blank">nykarlebyvyer.nu</a></div>
                     </div>

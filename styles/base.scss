@@ -113,7 +113,7 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
 .back-btn {
   @extend .fixed-btn;
   z-index: $z-back-btn;
-  left: 1rem;
+  left: 0.5rem;
 
   &:after{
     border-right-color: $color-secondary;
