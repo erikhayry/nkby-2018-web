@@ -20,7 +20,7 @@ function getIcon(id, visitedLocales = []){
     return renderIcon('/static/images/markers/marker.png')
 }
 
-function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMarker, handleMarkerEvent, enableUserInteractions = true){
+function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMarker, handleMarkerEvent, enableUserInteractions = true, showExplainer = false){
     return locales.map(({id, ...locale}) => {
         const { name, position, numberOfPages} = locale;
 
@@ -45,9 +45,19 @@ function renderMarkers(locales = [], visitedLocales, activeMarker, setActiveMark
             }}
             icon={getIcon(id, visitedLocales)}
         >
-            <div>
-                <div className="map--marker-label-name">{name}</div>
-                <div className="map--marker-label-count">{numberOfPages}</div>
+            <div className="map--marker-label-wrapper">
+                <div className="map--marker-label-name">
+                    {name}
+                    {showExplainer &&
+                        <>
+                            <br/>
+                            <span className="map--marker-label-explainer">Tryck igen för att öppna sida</span>
+                        </>
+                    }
+                </div>
+                <div className="map--marker-label-count">
+                    {numberOfPages}
+                </div>
             </div>
         </MarkerWithLabel> : null
     });
@@ -67,7 +77,8 @@ const MapRenderer = (props) => {
         onDragEnd,
         zoom,
         position,
-        isLoading
+        isLoading,
+        showExplainer
     } = props;
 
     return (
@@ -94,7 +105,7 @@ const MapRenderer = (props) => {
                     ...options
                 }}
             >
-                {renderMarkers(locales, visitedLocales, activeMarker, setActiveMarker, handleMarkerEvent, enableUserInteractions)}
+                {renderMarkers(locales, visitedLocales, activeMarker, setActiveMarker, handleMarkerEvent, enableUserInteractions, showExplainer)}
 
                 {props.userPosition && <Marker
                     key={'user'}

@@ -7,19 +7,33 @@
   position: relative;
 }
 
+.map--marker-label-wrapper{
+  display: table;
+  font-size: 1rem;
+}
+
 .map--marker-label-name{
   background-color: $color-primary;
   color: $color-secondary;
   padding: 0.75rem;
   text-transform: capitalize;
-  float: left;
+  display: table-cell;
 }
 
 .map--marker-label-count{
   color: $color-primary;
   background-color: $color-secondary;
   padding: 0.75rem;
-  float: left;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.map--marker-label-explainer{
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  font-style: italic;
+  display: inline-block;
+  text-transform: none;
 }
 
 .map--find-me-btn{

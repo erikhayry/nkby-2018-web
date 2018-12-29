@@ -3,6 +3,7 @@ import ReactGA from 'react-ga';
 import MapRenderer from './map-renderer';
 import ErrorBoundary from '../error-boundary'
 import Router from 'next/router'
+import store from '../../utils/store'
 
 const GOOGLE_MAPS_API = 'AIzaSyCFy3CNUN5wD31kqxr6fuBPmlSHMh9hcsw';
 
@@ -21,7 +22,8 @@ class Map extends React.Component {
         userPosition: undefined,
         zoom: undefined,
         center: undefined,
-        isLoading: ''
+        isLoading: '',
+        showExplainer: false
     };
 
     onMapMounted(map){
@@ -44,14 +46,23 @@ class Map extends React.Component {
     }
 
     handleMarkerEvent(id){
-        ReactGA.event({
-            category: 'user',
-            action: `marker:${id}`
-        });
-        Router.push({
-            pathname: '/locale',
-            query: {id},
-        })
+        let openedPageWithTouchCount = store.get('opened-page-with-touch-count') || 0;
+        if(this.state.activeMarker === id){
+            store.set('opened-page-with-touch-count', openedPageWithTouchCount + 1);
+            ReactGA.event({
+                category: 'user',
+                action: `marker:${id}`
+            });
+            Router.push({
+                pathname: '/locale',
+                query: {id},
+            })
+        } else {
+            this.setState({
+                activeMarker: id,
+                showExplainer: openedPageWithTouchCount < 4
+            })
+        }
     }
 
     setActiveMarker(id){
@@ -76,7 +87,7 @@ class Map extends React.Component {
     }
 
     render(){
-        const {userPosition, activeMarker, isLoading} = this.state;
+        const {userPosition, activeMarker, isLoading, showExplainer} = this.state;
         const {
             locales,
             currentLocale,
@@ -111,6 +122,7 @@ class Map extends React.Component {
                     options={options}
                     showFindMeButton={showFindMeButton}
                     enableUserInteractions={enableUserInteractions}
+                    showExplainer={showExplainer}
                     zoom={zoom}
                     position={position}
                 />
