@@ -33,7 +33,7 @@ class Locale extends React.PureComponent {
     }
 
     render() {
-        const {error, locale = {}, localesNearby = []} = this.props;
+        const {error, locale = {}, localesNearby = [], isOnline} = this.props;
 
         if (error) {
             return <ErrorPage statusCode={error} />
@@ -41,7 +41,7 @@ class Locale extends React.PureComponent {
         return (
             <>
                 <style jsx="true">{`
-                  .js .locale{
+                  .js .is-online .locale{
                     padding-top: ${MAP_HEIGHT}px;
                   }
                 `}</style>
@@ -49,7 +49,7 @@ class Locale extends React.PureComponent {
                     <Head>
                         <title>{`${capitalize(locale.name)} | NKBY`}</title>
                     </Head>
-                    <div className="locale--map-wrapper" style={{
+                    {isOnline && <div className="locale--map-wrapper" style={{
                         height: MAP_HEIGHT
                     }}>
                         <StaticMap
@@ -60,7 +60,7 @@ class Locale extends React.PureComponent {
                             zoom={14}
                             mapClassName="locale--map"
                         />
-                    </div>
+                    </div>}
                     <div className="locale--content">
                         <h1 className="locale--title">{locale.name}</h1>
                         <PageList pages={locale.pages} className="locale--page-list" />

@@ -7,25 +7,40 @@ class Image extends React.Component {
         super(props);
 
         this.state = { 
-            withJS: false
+            withJS: false,
+            imageStatus: 'loading'
         }
     }
 
     componentDidMount(){
         this.setState({
             withJS: true
-        })
+        });
+    }
+
+    handleImageLoaded() {
+        this.setState({ imageStatus: "loaded" });
+    }
+
+    handleImageErrored() {
+        this.setState({ imageStatus: "failed" });
     }
 
     render() {
-        const {src, height = 200} = this.props;
+        const {src, height = 200, alt} = this.props;
+        const { imageStatus, withJS } = this.state;
 
-        if(src){            
-            const imageEl = <img {...this.props} src={parseImageSrc(src)} />;
+        if(src && imageStatus !== 'failed'){
+            const imageEl = <img
+                {...this.props}
+                src={parseImageSrc(src)}
+                onLoad={this.handleImageLoaded.bind(this)}
+                onError={this.handleImageErrored.bind(this)}
+            />;
 
             return (
                 <>
-                    {this.state.withJS && <LazyLoad height={height}>
+                    {withJS && <LazyLoad height={height}>
                         {imageEl}
                     </LazyLoad>}
                     <noscript>
@@ -33,6 +48,8 @@ class Image extends React.Component {
                     </noscript>
                 </>
             )
+        } else if (alt) {
+            return <div className="image--alt">{alt}</div>
         }
 
         return null;

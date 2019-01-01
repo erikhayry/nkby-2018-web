@@ -150,3 +150,11 @@ $btn-round-top: ($btn-round-size / 2 - $btn-round-size-half);
   text-align: center;
   z-index: $z-ie-info;
 }
+
+.offline-message{
+  text-align: center;
+  padding: 0.25rem;
+  background-color: #e66f6f;
+  color: #fff;
+  margin-top: 5rem;
+}

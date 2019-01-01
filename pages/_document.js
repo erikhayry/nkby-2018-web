@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
                 <meta name="description" content="Ett sökverktyg för nykarlebyvyer.nu. Hitta och läs om historiska platser och personer i Nykarleby" />
+                <meta name="theme-color" content="#092b43"/>
                 <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet" />
                 <link rel="manifest" href="/static/manifest.json" />
 

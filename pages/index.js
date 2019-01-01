@@ -42,7 +42,7 @@ class App extends React.PureComponent {
     }
 
     render() {
-        const { locales } = this.props;
+        const { locales, isOnline } = this.props;
         const visitedLocales = store.get('visited-locales') || [];
         const zoom = store.get('zoom');
         const position = store.get('position');
@@ -50,7 +50,7 @@ class App extends React.PureComponent {
         return (
             <>
                 <style jsx="true">{`
-                      .js .index{
+                      .js .is-online .index{
                         padding-top: ${MAP_HEIGHT}px;
                       }
                     `}</style>
@@ -58,7 +58,7 @@ class App extends React.PureComponent {
                     <Head>
                         <title>Start | NKBY</title>
                     </Head>
-                    <div className="index--map-wrapper" style={{
+                    {isOnline && <div className="index--map-wrapper" style={{
                         height: MAP_HEIGHT
                     }}>
                         <Map
@@ -70,7 +70,7 @@ class App extends React.PureComponent {
                             onDragEnd={this.onDragEnd}
                             onZoomChanged={this.onZoomChanged}
                         />
-                    </div>
+                    </div>}
                     <div className="index--content">
                         <div className="index--content-inner">
                             <LocalesList locales={locales} withNav={true}  />

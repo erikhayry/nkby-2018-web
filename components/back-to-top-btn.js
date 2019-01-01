@@ -16,7 +16,7 @@ class BackToTopBtn extends React.Component {
     }
 
     componentDidMount(){
-        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll, {passive: true});
         this.setState({showBackToTop: typeof window !== 'undefined' && window.scrollY > 500 ? true : false});
 
     }

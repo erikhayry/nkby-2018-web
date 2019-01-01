@@ -31,25 +31,42 @@ export const appWithInitialization = App => {
             }
         }
 
+        state = {
+            isOnline: true
+        };
+
         componentDidMount(){
-            document.documentElement.className = "js";
+            document.documentElement.className = `js`;
+            this.setState({isOnline: navigator.onLine});
+
+            window.addEventListener('offline', this.handleIsOffline.bind(this), false);
+            window.addEventListener('online', this.handleIsOnline.bind(this), false);
+        }
+
+        handleIsOnline() {
+            this.setState({isOnline: true})
+        }
+
+        handleIsOffline() {
+            this.setState({isOnline: false})
         }
 
         render() {
             const {router: {pathname}, pageProps: {skipToContentCopy} = {}} = this.props;
+            const { isOnline } = this.state;
 
             return (
-                <>
+                <div id="top">
                     <a href="#main" className="visible-hidden" tabIndex="1">{skipToContentCopy || 'Gå direkt till innehåll'}</a>
+                    {!isOnline && <div className="offline-message">Du verkar just nu sakna internet. Sidan kommer därför bara fungera delvis</div>}
                     <Nav pathname={pathname} ></Nav>
-                    <App {...this.props} role="main" id="top"/>
+                    <App {...this.props} isOnline={isOnline} />
                     <BackToTopBtn />
                     <footer className="footer">
                         <div className="footer-inner">
-                            Skapad i Stockholm av <a href="https://ellenportin.myportfolio.com/" target="_blank" className="footer-inner--name">Ellen Portin</a> och <a href="https://github.com/erikportin" target="_blank" className="footer-inner--name">Erik Portin</a> hösten och vintern 2018
                         </div>
                     </footer>
-                </>
+                </div>
             )
         }
     };

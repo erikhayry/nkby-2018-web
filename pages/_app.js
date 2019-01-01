@@ -14,13 +14,13 @@ class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps, isLoading } = this.props;
+        const { Component, pageProps, isLoading, isOnline } = this.props;
 
         return (
             <Container>
-                <main id="main" className={`main ${isLoading ? 'is-loading' : ''}`}>
+                <main id="main" className={`main ${isLoading ? 'is-loading' : ''} ${isOnline ? 'is-online' : 'is-offline'}`}>
                     <PageTransition timeout={0} classNames="page-transition">
-                        <Component {...pageProps} />
+                        <Component {...pageProps} isOnline={isOnline}/>
                     </PageTransition>
                 </main>
             </Container>

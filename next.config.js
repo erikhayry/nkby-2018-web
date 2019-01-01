@@ -39,6 +39,39 @@ const babelConf =  {webpack: config => {
 }};
 
 
+const nextConfig = {
+    workboxOpts: {
+        swDest: 'static/service-worker.js',
+        runtimeCaching: [
+            {
+                urlPattern: /_next\/static$/,
+                handler: 'cacheFirst',
+                options: {
+                    cacheName: 'static-resources',
+                    cacheableResponse: {statuses: [0, 200]}
+                }
+            },
+            {
+                urlPattern: /api/,
+                handler: 'networkFirst',
+                options: {
+                    cacheableResponse: {
+                        statuses: [0, 200],
+                        headers: {'x-test': 'true'}
+                    }
+                }
+            },
+            {
+                urlPattern: /(localhost|nkby\.now\.sh|dev-nkby\.now\.sh)/i,
+                handler: 'staleWhileRevalidate',
+                options: {
+                    cacheableResponse: {statuses: [0, 200]},
+                    plugins: []
+                }
+            }
+        ],
+    },
+};
 
 const { PHASE_PRODUCTION_SERVER } =
     process.env.NODE_ENV === 'development'
@@ -58,9 +91,12 @@ module.exports = (phase, { defaultConfig }) => {
 
     const webpack = require('webpack');
     const withSass = require('@zeit/next-sass');
+    const withOffline = require('next-offline')
 
-    return withSass({
+
+    return withOffline(withSass({
+        ...nextConfig,
         babelConf,
         ...styleConfig
-    })
+    }))
 };
